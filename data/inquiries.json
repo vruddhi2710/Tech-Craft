@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7aea2665-f22a-4aef-92cb-666127048715",
+    "submittedAt": "2026-05-08T07:45:41.851Z",
+    "name": "Vruddhi Sanghvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "python",
+    "courseTitle": "Python",
+    "email": "sanghvivruddhi@gmail.com",
+    "phone": "08780432769",
+    "message": "hi hellopp",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "fb117da2-f456-4dc9-a8cb-17c1edca9fda",
+    "submittedAt": "2026-05-08T09:25:21.283Z",
+    "name": "Vruddhi Sanghvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "python",
+    "courseTitle": "Python",
+    "email": "sanghvivruddhi@gmail.com",
+    "phone": "08780432769",
+    "message": "xxxxxxsss",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "3a5088b2-45fe-45cc-bb22-9c0df4eab87b",
+    "submittedAt": "2026-05-08T09:41:07.317Z",
+    "name": "Vruddhi Sanghvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "web-design",
+    "courseTitle": "Web Design",
+    "email": "sanghvivruddhi@gmail.com",
+    "phone": "08780432769",
+    "message": "fbhwrbghhre\njkj",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "1d8277bd-5ad7-4bf5-a54f-f0616598b450",
+    "submittedAt": "2026-05-08T10:26:09.871Z",
+    "name": "Vruddhi Sanghvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "web-design",
+    "courseTitle": "Web Design",
+    "email": "sanghvivruddhi@gmail.com",
+    "phone": "08780432769",
+    "message": "asdfgh",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "5731f96c-63c7-4538-9d81-1e1a2dab8137",
+    "submittedAt": "2026-05-08T12:11:22.665Z",
+    "name": "kenvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "reactjs",
+    "courseTitle": "ReactJS",
+    "email": "kenvithakkar1810@gmail.com",
+    "phone": "08780432769",
+    "message": "hi hello",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "59f5b8a5-d511-4322-b7e3-ec5ab662ca08",
+    "submittedAt": "2026-05-08T12:46:40.411Z",
+    "name": "Mann Shah",
+    "address": "navrangpura ahmedabd",
+    "course": "reactjs",
+    "courseTitle": "ReactJS",
+    "email": "manogna.shah@gmail.com",
+    "phone": "9909945614",
+    "message": "hi how are you",
+    "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "fad67f10-4ffe-401c-94d1-626ae23f8873",
+    "submittedAt": "2026-05-09T06:18:36.749Z",
+    "name": "Vruddhi Sanghvi",
+    "address": "Shreyas Tekra Ambawadi",
+    "course": "genai",
+    "courseTitle": "GenAI",
+    "email": "sanghvivruddhi@gmail.com",
+    "phone": "08780432769",
+    "message": "gbvfcdxs",
+    "notifyEmail": "techcraft1999@gmail.com"
+  }
+]
