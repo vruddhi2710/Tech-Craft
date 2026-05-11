@@ -1,14 +1,54 @@
+import Link from 'next/link'
+import { ArrowRight, BriefcaseBusiness, Code2, Trophy } from 'lucide-react'
+
 export default function InternshipSection() {
   return (
-    <section id="internship" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl p-12 text-black text-center">
-        <h2 className="text-5xl font-bold">
-          Tech-Craft Internship Program
-        </h2>
+    <section id="internship" className="bg-white px-6 py-24 text-zinc-950">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl bg-zinc-950 p-8 text-white shadow-2xl shadow-zinc-300/70 sm:p-12">
+        <div className="absolute right-0 top-0 h-full w-1/2 bg-[linear-gradient(135deg,rgba(37,99,235,0.35),transparent_60%)]" />
+        <div className="absolute -right-10 -top-10 h-36 w-36 rounded-xl bg-blue-600" />
 
-        <p className="mt-6 text-lg">
-          Work on real projects, build portfolio & gain experience.
-        </p>
+        <div className="relative grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-md bg-white/10 px-4 py-2 text-sm font-black text-blue-100">
+              <BriefcaseBusiness className="h-4 w-4" />
+              Project-based internship
+            </div>
+            <h2 className="text-4xl font-black leading-tight sm:text-5xl">
+              Tech-Craft Internship Program
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+              Work on real projects, build your portfolio, learn teamwork, and gain the
+              confidence to present your skills professionally.
+            </p>
+
+            <Link
+              href="/inquiry"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-xl shadow-blue-950/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+            >
+              Apply Now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="rounded-xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+              <Code2 className="mb-4 h-7 w-7 text-blue-300" />
+              <h3 className="font-black">Real Client-Style Tasks</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-300">
+                Build practical features and portfolio-ready project work.
+              </p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+              <Trophy className="mb-4 h-7 w-7 text-blue-300" />
+              <h3 className="font-black">Mentor Feedback</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-300">
+                Improve through review, guidance, and presentation practice.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

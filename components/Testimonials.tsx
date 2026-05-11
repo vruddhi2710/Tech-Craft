@@ -44,15 +44,18 @@ export default async function Testimonials() {
   const movingReviews = [...reviews, ...reviews]
 
   return (
-    <section className="py-24 bg-slate-900/50">
+    <section id="reviews" className="bg-zinc-50 py-24 text-zinc-950">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+        <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
           Google Reviews
         </p>
 
-        <h2 className="mt-4 text-5xl font-bold">
+        <h2 className="mt-4 text-4xl font-black sm:text-5xl">
           Student Reviews
         </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600">
+          Real feedback from learners building skills with Tech-Craft.
+        </p>
       </div>
 
       <div className="mt-16 overflow-hidden">
@@ -60,45 +63,44 @@ export default async function Testimonials() {
           {movingReviews.map((review, index) => (
             <div
               key={`${review.name}-${index}`}
-              className="w-[320px] shrink-0 rounded-3xl border border-white/10 bg-slate-950 p-6 text-left shadow-2xl shadow-black/20 md:w-[380px]"
+              className="w-[320px] shrink-0 rounded-xl border border-zinc-200 bg-white p-6 text-left shadow-xl shadow-zinc-200/70 md:w-[380px]"
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-600">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-lg font-black text-white">
                     G
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-white">
+                    <h3 className="font-bold text-zinc-950">
                       {review.url ? (
-                        <a href={review.url} target="_blank" rel="noreferrer" className="transition hover:text-cyan-200">
+                        <a href={review.url} target="_blank" rel="noreferrer" className="transition hover:text-blue-600">
                           {review.name}
                         </a>
                       ) : (
                         review.name
                       )}
                     </h3>
-                    <p className="text-sm text-slate-400">{review.course}</p>
+                    <p className="text-sm text-zinc-500">{review.course}</p>
                   </div>
                 </div>
 
-                <div className="rounded-full bg-cyan-300/10 px-3 py-1 text-sm font-semibold text-cyan-100">
+                <div className="rounded-md bg-blue-50 px-3 py-1 text-sm font-black text-blue-600">
                   {review.rating}/5
                 </div>
               </div>
 
-              <div className="mt-5 text-yellow-300" aria-label={`${review.rating} star rating`}>
+              <div className="mt-5 text-yellow-400" aria-label={`${review.rating} star rating`}>
                 {renderStars(review.rating)}
               </div>
 
-              <p className="mt-4 leading-7 text-slate-300">
+              <p className="mt-4 leading-7 text-zinc-600">
                 {review.text}
               </p>
             </div>
           ))}
         </div>
       </div>
-
     </section>
   )
 }
