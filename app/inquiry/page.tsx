@@ -38,12 +38,12 @@ export default async function InquiryPage({ searchParams }: InquiryPageProps) {
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-600">
               Share your details and course interest. Our team will help you choose
-              the right path for coding, AI, web design, or internship training.
+              the right path for coding, AI, web development, or internship training.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
-                { icon: GraduationCap, title: 'Career-focused courses', desc: 'ReactJS, Python, GenAI and Web Design' },
+                { icon: GraduationCap, title: 'Career-focused courses', desc: 'ReactJS, Python, GenAI and Web Development' },
                 { icon: CheckCircle2, title: 'Practical learning', desc: 'Projects, mentor support and portfolio work' },
                 { icon: Clock, title: 'Quick response', desc: 'We will contact you after your inquiry' },
                 { icon: Phone, title: 'Personal guidance', desc: 'Course counseling for students and parents' },

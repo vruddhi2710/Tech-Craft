@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { ArrowRight, Clock, GraduationCap, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, Clock, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 
 export const metadata = {
   title: 'Contact',
@@ -23,8 +23,8 @@ export default function ContactPage() {
               Talk to us about your next skill
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-600">
-              Get guidance for courses, workshops, internship training, and the
-              right learning path for your goals.
+              Get guidance for courses, workshops, ISO-certified certification,
+              training support, placement support, and the right learning path for your goals.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -46,41 +46,47 @@ export default function ContactPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              {
-                icon: Phone,
-                title: 'Phone',
-                text: 'Course inquiry available',
-              },
-              {
-                icon: Mail,
-                title: 'Email',
-                text: 'Share your questions anytime',
-              },
-              {
-                icon: Clock,
-                title: 'Response',
-                text: 'Our team will contact you soon',
-              },
-              {
-                icon: GraduationCap,
-                title: 'Guidance',
-                text: 'Courses, workshops and internships',
-              },
-            ].map((item) => {
-              const Icon = item.icon
+            <a
+              href="tel:+918849870596"
+              className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50 transition hover:-translate-y-1 hover:border-blue-200"
+            >
+              <Phone className="mb-4 h-6 w-6 text-blue-600" />
+              <h2 className="font-black text-zinc-950">Phone</h2>
+              <p className="mt-2 text-sm font-bold leading-6 text-zinc-600">+91 88498 70596</p>
+            </a>
 
-              return (
-                <div
-                  key={item.title}
-                  className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50"
-                >
-                  <Icon className="mb-4 h-6 w-6 text-blue-600" />
-                  <h2 className="font-black text-zinc-950">{item.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-zinc-600">{item.text}</p>
-                </div>
-              )
-            })}
+            <a
+              href="mailto:techcraft1999@gmail.com"
+              className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50 transition hover:-translate-y-1 hover:border-blue-200"
+            >
+              <Mail className="mb-4 h-6 w-6 text-blue-600" />
+              <h2 className="font-black text-zinc-950">Email</h2>
+              <p className="mt-2 break-words text-sm font-bold leading-6 text-zinc-600">
+                techcraft1999@gmail.com
+              </p>
+            </a>
+
+            <a
+              href="https://www.instagram.com/tech_craft.academy?igsh=czVsbWpsYzZqODFp&utm_source=qr"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50 transition hover:-translate-y-1 hover:border-blue-200"
+            >
+              <Instagram className="mb-4 h-6 w-6 text-blue-600" />
+              <h2 className="font-black text-zinc-950">Instagram</h2>
+              <p className="mt-2 text-sm font-bold leading-6 text-zinc-600">tech_craft.academy</p>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/tech-craft-academy-340b14405/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50 transition hover:-translate-y-1 hover:border-blue-200"
+            >
+              <Linkedin className="mb-4 h-6 w-6 text-blue-600" />
+              <h2 className="font-black text-zinc-950">LinkedIn</h2>
+              <p className="mt-2 text-sm font-bold leading-6 text-zinc-600">Tech-Craft Academy</p>
+            </a>
           </div>
         </div>
       </section>
@@ -97,11 +103,21 @@ export default function ContactPage() {
           </div>
 
           <div className="grid gap-3 text-sm font-bold text-zinc-700 sm:grid-cols-2">
-            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-5">
-              Tech-Craft, Ahmedabad
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-5 sm:col-span-2">
+              Ajramar House, 7 Shivalik Plaza, IIM Road,
+              <br />
+              Polytechnic,
+              <br />
+              Opp. Ahmedabad Management Association (AMA),
+              <br />
+              Ahmedabad, Gujarat - 380015
             </div>
             <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-5">
-              Practical tech learning and guidance
+              <Clock className="mb-3 h-5 w-5 text-blue-600" />
+              10.30 AM - 06.30 PM, Monday - Saturday
+            </div>
+            <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-5">
+              ISO-certified certification with training and placement support
             </div>
           </div>
         </div>

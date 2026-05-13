@@ -1,159 +1,113 @@
-<<<<<<< HEAD
 import Link from 'next/link'
-=======
-import { Clock, MapPin, Phone, ArrowRight } from 'lucide-react'
->>>>>>> c779c4c3b9162a4b293d318254d3c9f64210d4cf
+import { ArrowRight, Clock, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+
+const quickLinks = [
+  { href: '/#home', label: 'Home' },
+  { href: '/courses', label: 'Courses' },
+  { href: '/#internship', label: 'Internship' },
+  { href: '/#workshops', label: 'Workshops' },
+  { href: '/events', label: 'Events' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export default function Footer() {
   return (
-    <footer
-      id="contact"
-<<<<<<< HEAD
-      className="border-t border-zinc-800 bg-zinc-950 px-6 py-14 text-white"
-    >
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
-        <div>
-          <h2 className="text-3xl font-black">
-            Tech<span className="text-blue-500">Craft</span>
-          </h2>
-
-          <p className="mt-4 max-w-xl text-zinc-400">
-            Learn future-ready tech skills with practical courses, workshops, and internship guidance.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="font-black">Courses</h3>
-          <div className="mt-4 grid gap-2 text-sm text-zinc-400">
-            <span>ReactJS</span>
-            <span>Python</span>
-            <span>GenAI</span>
-            <span>Web Design</span>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="font-black">Contact</h3>
-          <div className="mt-4 grid gap-2 text-sm text-zinc-400">
-            <span>Career counseling</span>
-            <span>Workshop batches</span>
-            <span>Internship inquiry</span>
-            <Link href="/feedback" className="transition hover:text-blue-400">
-              Feedback
+    <footer id="contact" className="border-t border-zinc-800 bg-zinc-950 px-6 py-14 text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_1.2fr]">
+          <div>
+            <h2 className="text-3xl font-black">
+              Tech-<span className="text-blue-500">Craft</span>
+            </h2>
+            <p className="mt-4 max-w-md leading-7 text-zinc-400">
+              Learn future-ready tech skills with practical courses, workshops, and internship guidance.
+            </p>
+            <Link
+              href="/inquiry"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+            >
+              Enroll Now
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+
+          <div>
+            <h3 className="text-lg font-black">Quick Links</h3>
+            <div className="mt-4 grid gap-3 text-sm font-bold text-zinc-400">
+              {quickLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="transition hover:text-blue-400">
+                  {link.label}
+                </Link>
+              ))}
+              <Link href="/feedback" className="transition hover:text-blue-400">
+                Feedback
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-black">Contact Info</h3>
+            <div className="mt-4 grid gap-4 text-sm text-zinc-400">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                <span>
+                  Ajramar House, 7 Shivalik Plaza, IIM Road,
+                  <br />
+                  Polytechnic,
+                  <br />
+                  Opp. Ahmedabad Management Association (AMA),
+                  <br />
+                  Ahmedabad, Gujarat - 380015
+                </span>
+              </div>
+
+              <a href="tel:+918849870596" className="flex items-center gap-3 transition hover:text-blue-400">
+                <Phone className="h-5 w-5 shrink-0 text-blue-400" />
+                +91 88498 70596
+              </a>
+
+              <a
+                href="mailto:techcraft1999@gmail.com"
+                className="flex items-center gap-3 transition hover:text-blue-400"
+              >
+                <Mail className="h-5 w-5 shrink-0 text-blue-400" />
+                techcraft1999@gmail.com
+              </a>
+
+              <a
+                href="https://www.instagram.com/tech_craft.academy?igsh=czVsbWpsYzZqODFp&utm_source=qr"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 transition hover:text-blue-400"
+              >
+                <Instagram className="h-5 w-5 shrink-0 text-blue-400" />
+                tech_craft.academy
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/tech-craft-academy-340b14405/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 transition hover:text-blue-400"
+              >
+                <Linkedin className="h-5 w-5 shrink-0 text-blue-400" />
+                Tech-Craft Academy
+              </a>
+
+              <div className="flex items-start gap-3">
+                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                <span>
+                  10.30 AM - 06.30 PM
+                  <br />
+                  Monday - Saturday
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="border-t border-zinc-800 pt-8 text-sm text-zinc-500 md:col-span-3">
-          © 2026 Tech-Craft. All rights reserved.
-=======
-      className="bg-gradient-to-br from-slate-950 via-slate-900 to-[#041e57] text-white py-16"
-    >
-      <div className="w-[98%] max-w-[1800px] mx-auto px-4 md:px-6">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.8)] backdrop-blur-xl">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-cyan-200 mb-4">Quick Links</h3>
-              <div className="space-y-3">
-                {['Home', 'About Us', 'Services', 'Training', 'Contact'].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-300">
-                      <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                    </div>
-                    <a
-                      href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="text-sm font-medium text-slate-200 transition hover:text-cyan-300"
-                    >
-                      {item}
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-cyan-200 mb-4">Contact Info</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-300">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div className="leading-5 text-sm text-slate-200">
-                    Ajramar House, 7 Shivalik Plaza, IIM Road, Polytechnic,
-                    <br /> Opp. Ahmedabad Management Association (AMA),
-                    <br /> Ahmedabad, Gujarat – 380015
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-500/10 text-red-400">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <a href="tel:8849870596" className="text-sm font-medium text-white transition hover:text-cyan-300">
-                    8849870596
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-300">
-                    <ArrowRight className="h-4 w-4" />
-                  </div>
-                  <a href="mailto:techcraft1999@gmail.com" className="text-sm font-medium text-white transition hover:text-cyan-300">
-                    techcraft1999@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-cyan-200 mb-4">Services</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-300">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <a
-                    href="https://g.co/kgs/ZUPBRbh"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-slate-200 transition hover:text-cyan-300"
-                  >
-                    View on Google Maps
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-500/10 text-red-400">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <a
-                    href="tel:8849870596"
-                    className="text-sm font-medium text-slate-200 transition hover:text-cyan-300"
-                  >
-                    Call Us Today
-                  </a>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-300">
-                    <Clock className="h-4 w-4" />
-                  </div>
-                  <div className="leading-5 text-sm text-slate-200">
-                    <p className="font-medium">10.30 AM - 06.30 PM</p>
-                    <p className="text-slate-400">
-                      Monday - Saturday
-                      <br /> 24/7 Support Available
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 border-t border-white/10 pt-8 text-center text-slate-300 sm:mt-16">
-            Tech-Craft | Copyright © 2026. All rights reserved.
-          </div>
->>>>>>> c779c4c3b9162a4b293d318254d3c9f64210d4cf
+        <div className="mt-10 border-t border-zinc-800 pt-8 text-sm text-zinc-500">
+          &copy; 2026 Tech-Craft. All rights reserved.
         </div>
       </div>
     </footer>

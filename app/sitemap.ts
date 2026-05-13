@@ -18,6 +18,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/events`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/courses`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     ...courses.map((course) => ({
       url: `${siteUrl}/courses/${course.slug}`,
       lastModified: now,

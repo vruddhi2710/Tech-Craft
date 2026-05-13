@@ -2,21 +2,21 @@ import Link from 'next/link'
 import { ArrowRight, Award, BriefcaseBusiness, CheckCircle2, PlayCircle, Star, Users } from 'lucide-react'
 
 const stats = [
-  { value: '5+', label: 'Career Courses', icon: Award },
+  { value: 'ISO', label: 'Certified Training', icon: Award },
   { value: '4.8', label: 'Student Rating', icon: Star },
-  { value: '100%', label: 'Practical Training', icon: BriefcaseBusiness },
+  { value: '100%', label: 'Placement Support', icon: BriefcaseBusiness },
 ]
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#fff8f2] px-6 pb-20 pt-36 text-zinc-950 lg:pt-44"
+      className="relative flex min-h-screen items-center overflow-hidden bg-white px-6 pb-20 pt-36 text-zinc-950 lg:pt-44"
     >
       <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(37,99,235,0.08),transparent_55%)]" />
       <div className="absolute -right-20 top-28 h-64 w-64 rounded-full border-[42px] border-blue-100/80" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
         <div className="relative z-10">
           <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700 shadow-sm">
             <Users className="h-4 w-4" />
@@ -31,9 +31,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
-            Industry-focused courses in AI, coding, web design, and internships.
-            No waiting for degrees. Just practical training, mentor support, and
-            portfolio projects that help students move toward real opportunities.
+            Industry-focused courses in AI, coding, web development, and internships
+            with ISO-certified certification, practical training, and placement support.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -54,7 +53,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-10 grid gap-3 text-sm font-bold text-zinc-700 sm:grid-cols-3">
-            {['Beginner friendly', 'Live projects', 'Placement guidance'].map((item) => (
+            {['ISO-certified certification', 'Training support', 'Placement support'].map((item) => (
               <div key={item} className="flex items-center gap-2 rounded-md bg-white px-3 py-2 shadow-sm">
                 <CheckCircle2 className="h-4 w-4 text-blue-600" />
                 {item}

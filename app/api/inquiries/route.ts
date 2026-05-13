@@ -29,6 +29,11 @@ type InquiryRecord = {
   notifyEmail: string
 }
 
+type StorageResult = {
+  saved: boolean
+  reason?: string
+}
+
 const notifyEmail = 'techcraft1999@gmail.com'
 const dataDirectory = path.join(process.cwd(), 'data')
 const jsonPath = path.join(dataDirectory, 'inquiries.json')
@@ -62,6 +67,43 @@ async function readInquiries() {
     return Array.isArray(parsed) ? parsed as InquiryRecord[] : []
   } catch {
     return []
+  }
+}
+
+async function saveInquiryLocally(inquiry: InquiryRecord): Promise<StorageResult> {
+  try {
+    await mkdir(dataDirectory, { recursive: true })
+
+    const inquiries = await readInquiries()
+    inquiries.push(inquiry)
+
+    await writeFile(jsonPath, `${JSON.stringify(inquiries, null, 2)}\n`, 'utf8')
+    await ensureCsvFile()
+    await appendFile(
+      csvPath,
+      [
+        inquiry.id,
+        inquiry.submittedAt,
+        inquiry.name,
+        inquiry.address,
+        inquiry.course,
+        inquiry.courseTitle,
+        inquiry.email,
+        inquiry.phone,
+        inquiry.message,
+        inquiry.notifyEmail,
+      ].map(csvEscape).join(',') + '\n',
+      'utf8',
+    )
+
+    return {
+      saved: true,
+    }
+  } catch (error) {
+    return {
+      saved: false,
+      reason: error instanceof Error ? error.message : 'Inquiry could not be saved locally.',
+    }
   }
 }
 
@@ -107,36 +149,26 @@ export async function POST(request: Request) {
     notifyEmail,
   }
 
-  await mkdir(dataDirectory, { recursive: true })
-
-  const inquiries = await readInquiries()
-  inquiries.push(inquiry)
-
-  await writeFile(jsonPath, `${JSON.stringify(inquiries, null, 2)}\n`, 'utf8')
-  await ensureCsvFile()
-  await appendFile(
-    csvPath,
-    [
-      inquiry.id,
-      inquiry.submittedAt,
-      inquiry.name,
-      inquiry.address,
-      inquiry.course,
-      inquiry.courseTitle,
-      inquiry.email,
-      inquiry.phone,
-      inquiry.message,
-      inquiry.notifyEmail,
-    ].map(csvEscape).join(',') + '\n',
-    'utf8',
-  )
-
+  const storageStatus = await saveInquiryLocally(inquiry)
   const emailStatus = await sendInquiryEmail(inquiry)
   const sheetStatus = await appendInquiryToGoogleSheet(inquiry)
+
+  if (!storageStatus.saved && !emailStatus.sent && !sheetStatus.appended) {
+    return NextResponse.json(
+      {
+        error: 'Inquiry could not be submitted right now. Please call or email Tech-Craft directly.',
+        storage: storageStatus,
+        email: emailStatus,
+        sheet: sheetStatus,
+      },
+      { status: 500 },
+    )
+  }
 
   return NextResponse.json({
     ok: true,
     inquiry,
+    storage: storageStatus,
     email: emailStatus,
     sheet: sheetStatus,
   })

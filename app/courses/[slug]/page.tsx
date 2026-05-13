@@ -1,14 +1,48 @@
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
-import { courses, getCourse } from '../../../data/courses'
-import { ArrowLeft, ArrowRight, CheckCircle2, Clock, Layers3, ListChecks, Wrench } from 'lucide-react'
+import CourseOutline from '../../../components/CourseOutline'
+import { courses, getCourse, type Course } from '../../../data/courses'
+import { ArrowLeft, ArrowRight, Award, BriefcaseBusiness, CheckCircle2, Clock, Handshake, Layers3, ListChecks, Wrench } from 'lucide-react'
 
 type CoursePageProps = {
   params: Promise<{
     slug: string
   }>
+}
+
+const courseFeatures = [
+  {
+    title: 'ISO Certified Certificate',
+    desc: 'Complete the course with ISO-certified certificate support from Tech-Craft.',
+    icon: Award,
+  },
+  {
+    title: 'Placement Training',
+    desc: 'Get resume guidance, interview preparation, and job-readiness training.',
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: 'Placement Support Assistance',
+    desc: 'Receive placement guidance, profile support, and practical career assistance.',
+    icon: Handshake,
+  },
+]
+
+function getCourseOutline(course: Course) {
+  if (course.outline?.length) {
+    return course.outline
+  }
+
+  return course.modules.map((module) => ({
+    title: module,
+    topics: [
+      'Step-by-step lessons with guided practice',
+      'Hands-on exercises based on real learning scenarios',
+      'Doubt solving and revision before moving ahead',
+    ],
+  }))
 }
 
 export function generateStaticParams() {
@@ -48,8 +82,10 @@ export default async function CoursePage({ params }: CoursePageProps) {
   const course = getCourse(slug)
 
   if (!course) {
-    notFound()
+    redirect('/courses')
   }
+
+  const outline = getCourseOutline(course)
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-zinc-950">
@@ -61,7 +97,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
         <div className="relative mx-auto max-w-7xl">
           <Link
-            href="/#courses"
+            href="/courses"
             className="inline-flex items-center gap-2 text-sm font-black text-blue-600 transition hover:text-blue-700"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -147,27 +183,69 @@ export default async function CoursePage({ params }: CoursePageProps) {
         </div>
       </section>
 
-      <section className="bg-zinc-50 px-6 py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
-          <div className="rounded-xl border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-200/70">
-            <h2 className="flex items-center gap-3 text-3xl font-black">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
-                <ListChecks className="h-5 w-5" />
-              </span>
-              Course Modules
+      <section className="bg-[#f5f9ff] px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
+              Course Benefits
+            </p>
+            <h2 className="mt-4 text-4xl font-black leading-tight">
+              Certification, training, and support included
             </h2>
-            <div className="mt-8 space-y-5">
-              {course.modules.map((module, index) => (
-                <div key={module} className="flex gap-4">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-blue-600 font-black text-white">
-                    {index + 1}
-                  </span>
-                  <p className="pt-1 text-zinc-600">{module}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
+          <div className="grid gap-5 md:grid-cols-3">
+            {courseFeatures.map((feature) => {
+              const Icon = feature.icon
+
+              return (
+                <div key={feature.title} className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg shadow-blue-100/50">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 text-xl font-black text-zinc-950">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 text-sm font-bold leading-6 text-zinc-600">
+                    {feature.desc}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-zinc-50 px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
+                Course Outline
+              </p>
+              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+                {outline.length} Modules
+              </h2>
+              <p className="mt-4 max-w-2xl leading-7 text-zinc-600">
+                A structured module-by-module path designed for practical learning, revision, and project work.
+              </p>
+            </div>
+
+            <Link
+              href={`/inquiry?course=${course.slug}`}
+              className="inline-flex w-fit items-center gap-2 rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+            >
+              Enroll Now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <CourseOutline outline={outline} />
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
           <div className="rounded-xl border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-200/70">
             <h2 className="flex items-center gap-3 text-3xl font-black">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
@@ -185,7 +263,12 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </div>
 
           <div className="rounded-xl border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-200/70">
-            <h2 className="text-3xl font-black">Projects</h2>
+            <h2 className="flex items-center gap-3 text-3xl font-black">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                <ListChecks className="h-5 w-5" />
+              </span>
+              Projects
+            </h2>
             <div className="mt-8 space-y-4">
               {course.projects.map((project) => (
                 <p key={project} className="rounded-lg bg-zinc-50 px-4 py-3 font-bold text-zinc-600">

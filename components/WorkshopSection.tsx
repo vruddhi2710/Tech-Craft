@@ -20,7 +20,7 @@ const workshops = [
 
 export default function WorkshopSection() {
   return (
-    <section id="workshops" className="relative bg-zinc-50 px-6 py-24 text-zinc-950">
+    <section id="workshops" className="relative bg-white px-6 py-24 text-zinc-950">
       <div className="relative mx-auto max-w-7xl text-center">
         <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
           Short Sessions

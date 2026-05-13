@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react'
 import { getGoogleReviews, type DisplayReview } from '../lib/googleReviews'
 
 const fallbackReviews: DisplayReview[] = [
@@ -21,7 +22,7 @@ const fallbackReviews: DisplayReview[] = [
   },
   {
     name: 'Neha K.',
-    course: 'Web Design',
+    course: 'Web Development',
     rating: '5.0',
     text: 'The design lessons were clear, practical, and helped me improve my Figma screens quickly.',
   },
@@ -35,7 +36,14 @@ const fallbackReviews: DisplayReview[] = [
 
 function renderStars(rating: string) {
   const roundedRating = Math.round(Number(rating) || 5)
-  return '★★★★★'.slice(0, roundedRating).padEnd(5, '☆')
+
+  return Array.from({ length: 5 }, (_, index) => (
+    <Star
+      key={index}
+      className="h-4 w-4"
+      fill={index < roundedRating ? 'currentColor' : 'none'}
+    />
+  ))
 }
 
 export default async function Testimonials() {
@@ -44,7 +52,7 @@ export default async function Testimonials() {
   const movingReviews = [...reviews, ...reviews]
 
   return (
-    <section id="reviews" className="bg-zinc-50 py-24 text-zinc-950">
+    <section id="reviews" className="bg-white py-24 text-zinc-950">
       <div className="mx-auto max-w-7xl px-6 text-center">
         <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
           Google Reviews
@@ -90,7 +98,7 @@ export default async function Testimonials() {
                 </div>
               </div>
 
-              <div className="mt-5 text-yellow-400" aria-label={`${review.rating} star rating`}>
+              <div className="mt-5 flex gap-1 text-yellow-400" aria-label={`${review.rating} star rating`}>
                 {renderStars(review.rating)}
               </div>
 

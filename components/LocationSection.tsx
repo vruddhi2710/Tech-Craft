@@ -6,41 +6,41 @@ const mapSrc =
 
 export default function LocationSection() {
   return (
-    <section id="location" className="bg-white px-6 py-24 text-zinc-950">
+    <section id="location" className="bg-[#071a3d] px-6 py-24 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="flex flex-col justify-center">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-300">
             Our Location
           </p>
           <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
             Visit Tech-Craft for career guidance
           </h2>
-          <p className="mt-5 text-lg leading-8 text-zinc-600">
+          <p className="mt-5 text-lg leading-8 text-blue-100">
             Find us on Google Maps and reach the institute easily for course counseling,
             admissions, workshops, and internship inquiries.
           </p>
 
-          <div className="mt-8 grid gap-4 text-sm font-bold text-zinc-700 sm:grid-cols-2">
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-              <MapPin className="mb-3 h-6 w-6 text-blue-600" />
+          <div className="mt-8 grid gap-4 text-sm font-bold text-blue-50 sm:grid-cols-2">
+            <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+              <MapPin className="mb-3 h-6 w-6 text-blue-300" />
               Tech-Craft, Ahmedabad
             </div>
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
-              <Phone className="mb-3 h-6 w-6 text-blue-600" />
+            <div className="rounded-xl border border-white/10 bg-white/10 p-5">
+              <Phone className="mb-3 h-6 w-6 text-blue-300" />
               Course inquiry available
             </div>
           </div>
 
           <Link
             href="/inquiry"
-            className="mt-8 inline-flex w-fit items-center gap-2 rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+            className="mt-8 inline-flex w-fit items-center gap-2 rounded-md bg-blue-500 px-6 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/20 transition hover:-translate-y-0.5 hover:bg-blue-600"
           >
             Contact Now
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 shadow-2xl shadow-zinc-200/80">
+        <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-2xl shadow-blue-950/50">
           <iframe
             src={mapSrc}
             title="Tech-Craft location on Google Maps"

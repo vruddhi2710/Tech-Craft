@@ -45,3 +45,10 @@ html {
     transform: translateY(0);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title,
+  .reviews-marquee {
+    animation: none;
+  }
+}
