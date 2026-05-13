@@ -6,9 +6,11 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const navLinks = [
+  { href: '/', label: 'Home', pathname: '/' },
+  { href: '/about', label: 'About Us', pathname: '/about' },
   { href: '/courses', label: 'Courses', pathname: '/courses' },
   { href: '/#internship', label: 'Internship', sectionId: 'internship' },
-  { href: '/#workshops', label: 'Workshops', sectionId: 'workshops' },
+  { href: '/it-services', label: 'IT Services', pathname: '/it-services' },
   { href: '/events', label: 'Events', pathname: '/events' },
   { href: '/contact', label: 'Contact', pathname: '/contact' },
 ]

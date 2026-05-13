@@ -1,7 +1,6 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Courses from '../components/Courses'
-import WorkshopSection from '../components/WorkshopSection'
 import InternshipSection from '../components/InternshipSection'
 import Testimonials from '../components/Testimonials'
 import LocationSection from '../components/LocationSection'
@@ -13,7 +12,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Courses />
-      <WorkshopSection />
       <InternshipSection />
       <Testimonials />
       <LocationSection />

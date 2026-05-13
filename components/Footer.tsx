@@ -2,24 +2,25 @@ import Link from 'next/link'
 import { ArrowRight, Clock, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 
 const quickLinks = [
-  { href: '/#home', label: 'Home' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
   { href: '/courses', label: 'Courses' },
   { href: '/#internship', label: 'Internship' },
-  { href: '/#workshops', label: 'Workshops' },
+  { href: '/it-services', label: 'IT Services' },
   { href: '/events', label: 'Events' },
   { href: '/contact', label: 'Contact' },
 ]
 
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-zinc-800 bg-zinc-950 px-6 py-14 text-white">
+    <footer id="contact" className="border-t border-zinc-200 bg-white px-6 py-10 text-zinc-950">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_1.2fr]">
           <div>
             <h2 className="text-3xl font-black">
               Tech-<span className="text-blue-500">Craft</span>
             </h2>
-            <p className="mt-4 max-w-md leading-7 text-zinc-400">
+            <p className="mt-4 max-w-md leading-7 text-zinc-600">
               Learn future-ready tech skills with practical courses, workshops, and internship guidance.
             </p>
             <Link
@@ -33,13 +34,13 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-black">Quick Links</h3>
-            <div className="mt-4 grid gap-3 text-sm font-bold text-zinc-400">
+            <div className="mt-4 grid gap-3 text-sm font-bold text-zinc-600">
               {quickLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="transition hover:text-blue-400">
+                <Link key={link.href} href={link.href} className="transition hover:text-blue-600">
                   {link.label}
                 </Link>
               ))}
-              <Link href="/feedback" className="transition hover:text-blue-400">
+              <Link href="/feedback" className="transition hover:text-blue-600">
                 Feedback
               </Link>
             </div>
@@ -47,9 +48,9 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-black">Contact Info</h3>
-            <div className="mt-4 grid gap-4 text-sm text-zinc-400">
+            <div className="mt-4 grid gap-4 text-sm text-zinc-600">
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
                 <span>
                   Ajramar House, 7 Shivalik Plaza, IIM Road,
                   <br />
@@ -61,16 +62,16 @@ export default function Footer() {
                 </span>
               </div>
 
-              <a href="tel:+918849870596" className="flex items-center gap-3 transition hover:text-blue-400">
-                <Phone className="h-5 w-5 shrink-0 text-blue-400" />
+              <a href="tel:+918849870596" className="flex items-center gap-3 transition hover:text-blue-600">
+                <Phone className="h-5 w-5 shrink-0 text-blue-600" />
                 +91 88498 70596
               </a>
 
               <a
                 href="mailto:techcraft1999@gmail.com"
-                className="flex items-center gap-3 transition hover:text-blue-400"
+                className="flex items-center gap-3 transition hover:text-blue-600"
               >
-                <Mail className="h-5 w-5 shrink-0 text-blue-400" />
+                <Mail className="h-5 w-5 shrink-0 text-blue-600" />
                 techcraft1999@gmail.com
               </a>
 
@@ -78,9 +79,9 @@ export default function Footer() {
                 href="https://www.instagram.com/tech_craft.academy?igsh=czVsbWpsYzZqODFp&utm_source=qr"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 transition hover:text-blue-400"
+                className="flex items-center gap-3 transition hover:text-blue-600"
               >
-                <Instagram className="h-5 w-5 shrink-0 text-blue-400" />
+                <Instagram className="h-5 w-5 shrink-0 text-blue-600" />
                 tech_craft.academy
               </a>
 
@@ -88,14 +89,14 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/tech-craft-academy-340b14405/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 transition hover:text-blue-400"
+                className="flex items-center gap-3 transition hover:text-blue-600"
               >
-                <Linkedin className="h-5 w-5 shrink-0 text-blue-400" />
+                <Linkedin className="h-5 w-5 shrink-0 text-blue-600" />
                 Tech-Craft Academy
               </a>
 
               <div className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
+                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
                 <span>
                   10.30 AM - 06.30 PM
                   <br />
