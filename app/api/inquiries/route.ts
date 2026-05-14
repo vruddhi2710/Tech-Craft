@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server'
-import { access, appendFile, mkdir, readFile, writeFile } from 'fs/promises'
-import path from 'path'
 import { readAdminCourses } from '../../../lib/adminData'
 import { sendInquiryEmail } from '../../../lib/mailer'
 import { appendInquiryToGoogleSheet } from '../../../lib/googleSheet'
@@ -29,16 +27,7 @@ type InquiryRecord = {
   notifyEmail: string
 }
 
-type StorageResult = {
-  saved: boolean
-  reason?: string
-}
-
 const notifyEmail = 'techcraft1999@gmail.com'
-const dataDirectory = path.join(process.cwd(), 'data')
-const jsonPath = path.join(dataDirectory, 'inquiries.json')
-const csvPath = path.join(dataDirectory, 'inquiries.csv')
-const csvHeader = 'id,submittedAt,name,address,course,courseTitle,email,phone,message,notifyEmail\n'
 
 function text(value: unknown) {
   return typeof value === 'string' ? value.trim() : ''
@@ -46,65 +35,6 @@ function text(value: unknown) {
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-}
-
-function csvEscape(value: string) {
-  return `"${value.replace(/"/g, '""')}"`
-}
-
-async function ensureCsvFile() {
-  try {
-    await access(csvPath)
-  } catch {
-    await writeFile(csvPath, csvHeader, 'utf8')
-  }
-}
-
-async function readInquiries() {
-  try {
-    const file = await readFile(jsonPath, 'utf8')
-    const parsed = JSON.parse(file)
-    return Array.isArray(parsed) ? parsed as InquiryRecord[] : []
-  } catch {
-    return []
-  }
-}
-
-async function saveInquiryLocally(inquiry: InquiryRecord): Promise<StorageResult> {
-  try {
-    await mkdir(dataDirectory, { recursive: true })
-
-    const inquiries = await readInquiries()
-    inquiries.push(inquiry)
-
-    await writeFile(jsonPath, `${JSON.stringify(inquiries, null, 2)}\n`, 'utf8')
-    await ensureCsvFile()
-    await appendFile(
-      csvPath,
-      [
-        inquiry.id,
-        inquiry.submittedAt,
-        inquiry.name,
-        inquiry.address,
-        inquiry.course,
-        inquiry.courseTitle,
-        inquiry.email,
-        inquiry.phone,
-        inquiry.message,
-        inquiry.notifyEmail,
-      ].map(csvEscape).join(',') + '\n',
-      'utf8',
-    )
-
-    return {
-      saved: true,
-    }
-  } catch (error) {
-    return {
-      saved: false,
-      reason: error instanceof Error ? error.message : 'Inquiry could not be saved locally.',
-    }
-  }
 }
 
 export async function POST(request: Request) {
@@ -150,15 +80,13 @@ export async function POST(request: Request) {
     notifyEmail,
   }
 
-  const storageStatus = await saveInquiryLocally(inquiry)
   const emailStatus = await sendInquiryEmail(inquiry)
   const sheetStatus = await appendInquiryToGoogleSheet(inquiry)
 
-  if (!storageStatus.saved && !emailStatus.sent && !sheetStatus.appended) {
+  if (!emailStatus.sent && !sheetStatus.appended) {
     return NextResponse.json(
       {
         error: 'Inquiry could not be submitted right now. Please call or email Tech-Craft directly.',
-        storage: storageStatus,
         email: emailStatus,
         sheet: sheetStatus,
       },
@@ -169,7 +97,6 @@ export async function POST(request: Request) {
   return NextResponse.json({
     ok: true,
     inquiry,
-    storage: storageStatus,
     email: emailStatus,
     sheet: sheetStatus,
   })

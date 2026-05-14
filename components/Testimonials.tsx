@@ -39,16 +39,16 @@ export default async function Testimonials() {
   const reviews = googleReviews.length > 0 ? googleReviews : fallbackReviews
 
   return (
-    <section id="reviews" className="bg-white py-24 text-zinc-950">
+    <section id="reviews" className="bg-[#071a3d] py-24 text-white">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
+        <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-300">
           Google Reviews
         </p>
 
         <h2 className="mt-4 text-4xl font-black sm:text-5xl">
           Student Reviews
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600">
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-blue-100">
           Real feedback from learners building skills with Tech-Craft.
         </p>
       </div>

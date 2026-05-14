@@ -21,6 +21,7 @@ type GooglePlaceDetailsResponse = {
     reviews?: GooglePlaceReview[]
     user_ratings_total?: number
   }
+  error_message?: string
   status?: string
 }
 
@@ -35,6 +36,7 @@ export async function getGoogleReviews(): Promise<DisplayReview[]> {
   const params = new URLSearchParams({
     place_id: placeId,
     fields: 'name,rating,user_ratings_total,reviews',
+    reviews_sort: 'newest',
     key: apiKey,
   })
 
@@ -47,12 +49,22 @@ export async function getGoogleReviews(): Promise<DisplayReview[]> {
     })
 
     if (!response.ok) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(`Google reviews request failed with HTTP ${response.status}.`)
+      }
+
       return []
     }
 
     const data = await response.json() as GooglePlaceDetailsResponse
 
     if (data.status !== 'OK' || !data.result?.reviews?.length) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          `Google reviews unavailable: ${data.status || 'UNKNOWN'}${data.error_message ? ` - ${data.error_message}` : ''}`,
+        )
+      }
+
       return []
     }
 

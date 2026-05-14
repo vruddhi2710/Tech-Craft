@@ -29,16 +29,16 @@ export default function Courses({ courses }: CoursesProps) {
   const visibleCourses = courses.filter((course) => categoryFilters[activeCategory].includes(course.slug))
 
   return (
-    <section id="courses" className="relative bg-[#071a3d] px-6 py-24 text-white">
+    <section id="courses" className="relative bg-white px-6 py-24 text-zinc-950">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-14 max-w-3xl text-center">
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-300">
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
             Explore Courses
           </p>
           <h2 className="mt-4 text-4xl font-black sm:text-5xl">
             Our Most In-Demand Courses
           </h2>
-          <p className="mt-5 text-lg leading-8 text-blue-100">
+          <p className="mt-5 text-lg leading-8 text-zinc-600">
             Choose a practical career track and build work you can proudly show.
           </p>
         </div>
@@ -55,8 +55,8 @@ export default function Courses({ courses }: CoursesProps) {
                 onClick={() => setActiveCategory(category)}
                 className={`rounded-md border px-4 py-2 text-sm font-black transition ${
                   isActive
-                    ? 'border-blue-400 bg-blue-500 text-white shadow-lg shadow-blue-950/20'
-                    : 'border-white/15 bg-white/10 text-blue-50 hover:border-blue-300 hover:bg-white hover:text-blue-700'
+                    ? 'border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-600/20'
+                    : 'border-zinc-200 bg-[#f5f9ff] text-blue-700 hover:border-blue-200 hover:bg-white'
                 }`}
               >
                 {category}
