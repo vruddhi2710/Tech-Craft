@@ -1,18 +1,21 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Courses from '../components/Courses'
-import InternshipSection from '../components/InternshipSection'
 import Testimonials from '../components/Testimonials'
 import LocationSection from '../components/LocationSection'
 import Footer from '../components/Footer'
+import { readAdminCourses } from '../lib/adminData'
 
-export default function Home() {
+export const dynamic = 'force-dynamic'
+
+export default async function Home() {
+  const courses = await readAdminCourses()
+
   return (
     <main className="overflow-hidden bg-white text-zinc-950">
       <Navbar />
       <Hero />
-      <Courses />
-      <InternshipSection />
+      <Courses courses={courses} />
       <Testimonials />
       <LocationSection />
       <Footer />

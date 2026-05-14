@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import FreeConsultationWidget from '../components/FreeConsultationWidget'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'
 
@@ -42,7 +43,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <FreeConsultationWidget />
+      </body>
     </html>
   )
 }

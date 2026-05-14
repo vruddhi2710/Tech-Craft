@@ -106,5 +106,17 @@
     "phone": "08866577000",
     "message": "",
     "notifyEmail": "techcraft1999@gmail.com"
+  },
+  {
+    "id": "dd0d4efe-9aab-4b59-be8d-9f341f6ff71b",
+    "submittedAt": "2026-05-13T12:25:11.307Z",
+    "name": "MD",
+    "address": "Ahmedabad",
+    "course": "genai",
+    "courseTitle": "GenAI",
+    "email": "md@gmail.com",
+    "phone": "7487031760",
+    "message": "",
+    "notifyEmail": "techcraft1999@gmail.com"
   }
 ]

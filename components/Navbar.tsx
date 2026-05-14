@@ -1,73 +1,28 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ArrowRight, Menu, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const navLinks = [
   { href: '/', label: 'Home', pathname: '/' },
   { href: '/about', label: 'About Us', pathname: '/about' },
   { href: '/courses', label: 'Courses', pathname: '/courses' },
-  { href: '/#internship', label: 'Internship', sectionId: 'internship' },
+  { href: '/internship', label: 'Internship', pathname: '/internship' },
   { href: '/it-services', label: 'IT Services', pathname: '/it-services' },
   { href: '/events', label: 'Events', pathname: '/events' },
+  { href: '/blogs', label: 'Blogs', pathname: '/blogs' },
   { href: '/contact', label: 'Contact', pathname: '/contact' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
   const pathname = usePathname()
 
-  useEffect(() => {
-    if (pathname !== '/') {
-      setActiveSection('')
-      return
-    }
-
-    const updateFromHash = () => {
-      setActiveSection(window.location.hash.replace('#', ''))
-    }
-
-    updateFromHash()
-    window.addEventListener('hashchange', updateFromHash)
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0]
-
-        if (visibleEntry) {
-          setActiveSection(visibleEntry.target.id)
-        }
-      },
-      {
-        rootMargin: '-35% 0px -45% 0px',
-        threshold: [0.2, 0.4, 0.6],
-      },
-    )
-
-    navLinks.forEach((link) => {
-      if (!link.sectionId) return
-
-      const section = document.getElementById(link.sectionId)
-      if (section) observer.observe(section)
-    })
-
-    return () => {
-      window.removeEventListener('hashchange', updateFromHash)
-      observer.disconnect()
-    }
-  }, [pathname])
-
   const isActiveLink = (link: (typeof navLinks)[number]) => {
-    if (link.pathname) {
-      return pathname === link.pathname
-    }
-
-    return pathname === '/' && activeSection === link.sectionId
+    return pathname === link.pathname
   }
 
   return (
@@ -80,9 +35,12 @@ export default function Navbar() {
           className="group flex min-w-0 items-center gap-2.5 sm:gap-3"
           onClick={() => setIsOpen(false)}
         >
-          <img
+          <Image
             src="/techcraft-logo.jpeg"
             alt="Tech-Craft logo"
+            width={56}
+            height={56}
+            priority
             className="h-12 w-12 shrink-0 rounded-lg border border-zinc-200 object-contain shadow-sm transition duration-300 group-hover:-rotate-2 group-hover:scale-105 sm:h-14 sm:w-14"
           />
           <div className="min-w-0 leading-tight">

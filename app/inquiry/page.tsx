@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import InquiryForm from '../../components/InquiryForm'
-import { courses } from '../../data/courses'
+import { readAdminCourses } from '../../lib/adminData'
 import { CheckCircle2, Clock, GraduationCap, Phone } from 'lucide-react'
 
 type InquiryPageProps = {
@@ -15,8 +15,11 @@ export const metadata = {
   description: 'Submit a course inquiry for Tech-Craft.',
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function InquiryPage({ searchParams }: InquiryPageProps) {
   const { course } = await searchParams
+  const courses = await readAdminCourses()
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-zinc-950">

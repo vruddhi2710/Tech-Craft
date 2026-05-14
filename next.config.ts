@@ -2,16 +2,19 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: __dirname,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
   async redirects() {
     return [
       {
-        source: '/about',
-        destination: '/#home',
-        permanent: false,
-      },
-      {
         source: '/about-us',
-        destination: '/#home',
+        destination: '/about',
         permanent: false,
       },
       {
@@ -35,23 +38,18 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: '/internship',
-        destination: '/#internship',
-        permanent: false,
-      },
-      {
         source: '/internships',
-        destination: '/#internship',
+        destination: '/internship',
         permanent: false,
       },
       {
         source: '/workshop',
-        destination: '/#workshops',
+        destination: '/events',
         permanent: false,
       },
       {
         source: '/workshops',
-        destination: '/#workshops',
+        destination: '/events',
         permanent: false,
       },
       {

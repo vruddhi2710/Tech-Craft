@@ -40,6 +40,7 @@ export async function getGoogleReviews(): Promise<DisplayReview[]> {
 
   try {
     const response = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?${params}`, {
+      signal: AbortSignal.timeout(3500),
       next: {
         revalidate: 60 * 60 * 6,
       },

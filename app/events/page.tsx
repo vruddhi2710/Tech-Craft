@@ -1,13 +1,16 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { events } from '../../data/events'
+import { readAdminEvents } from '../../lib/adminData'
 import { ArrowRight, CalendarDays, Clock, GraduationCap, MapPin, Ticket, Users } from 'lucide-react'
 
 export const metadata = {
   title: 'Events',
   description: 'Upcoming Tech-Craft course events, workshops, demo classes, and career sessions.',
 }
+
+export const dynamic = 'force-dynamic'
 
 function formatEventDate(date: string) {
   return new Intl.DateTimeFormat('en-IN', {
@@ -17,7 +20,8 @@ function formatEventDate(date: string) {
   }).format(new Date(date))
 }
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await readAdminEvents()
   const nextEvent = events[0]
 
   return (
@@ -58,6 +62,17 @@ export default function EventsPage() {
           </div>
 
           <div className="relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl shadow-blue-100/80">
+            {nextEvent?.image ? (
+              <Image
+                src={nextEvent.image}
+                alt={nextEvent.title}
+                width={900}
+                height={506}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="mb-5 aspect-[16/9] w-full rounded-xl object-cover"
+              />
+            ) : null}
             <div className="flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
                 <CalendarDays className="h-6 w-6" />
@@ -66,19 +81,19 @@ export default function EventsPage() {
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">
                   Next Event
                 </p>
-                <h2 className="mt-1 text-2xl font-black">{nextEvent.title}</h2>
+                <h2 className="mt-1 text-2xl font-black">{nextEvent?.title || 'New event coming soon'}</h2>
               </div>
             </div>
             <div className="mt-6 grid gap-3 text-sm font-bold text-zinc-700 sm:grid-cols-2">
               <div className="rounded-lg bg-zinc-50 p-4">
                 <Clock className="mb-2 h-5 w-5 text-blue-600" />
-                {formatEventDate(nextEvent.date)}
+                {nextEvent ? formatEventDate(nextEvent.date) : 'To be announced'}
                 <br />
-                {nextEvent.time}
+                {nextEvent?.time || ''}
               </div>
               <div className="rounded-lg bg-zinc-50 p-4">
                 <MapPin className="mb-2 h-5 w-5 text-blue-600" />
-                {nextEvent.venue}
+                {nextEvent?.venue || 'Tech-Craft Academy'}
               </div>
             </div>
           </div>
@@ -103,8 +118,19 @@ export default function EventsPage() {
             {events.map((event) => (
               <article
                 key={event.slug}
-                className="rounded-xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-200/70 transition hover:-translate-y-1 hover:border-blue-200"
+                className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition hover:-translate-y-1 hover:border-blue-200"
               >
+                {event.image ? (
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    width={900}
+                    height={506}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                ) : null}
+                <div className="p-6">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">
@@ -155,6 +181,7 @@ export default function EventsPage() {
                   Register for Event
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+                </div>
               </article>
             ))}
           </div>

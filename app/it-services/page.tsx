@@ -1,23 +1,27 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { ArrowRight, ArrowUpRight, Clock, Layers3 } from 'lucide-react'
-import { courses } from '../../data/courses'
+import { readAdminCourses } from '../../lib/adminData'
 
 export const metadata = {
   title: 'IT Services | Tech-Craft',
   description: 'Explore Tech-Craft IT Services including training programs in Python, React, Node.js, Generative AI, SQL, MERN Stack, and Full Stack Development.',
 }
 
-const shortTermPrograms = courses.filter(course =>
-  ['python', 'reactjs', 'nodejs', 'genai', 'sql', 'basic-coding'].includes(course.slug)
-)
+export const dynamic = 'force-dynamic'
 
-const longTermPrograms = courses.filter(course =>
-  ['mern-stack', 'full-stack'].includes(course.slug)
-)
+export default async function ITServicesPage() {
+  const courses = await readAdminCourses()
+  const shortTermPrograms = courses.filter(course =>
+    ['python', 'reactjs', 'nodejs', 'genai', 'sql', 'basic-coding'].includes(course.slug)
+  )
 
-export default function ITServicesPage() {
+  const longTermPrograms = courses.filter(course =>
+    ['mern-stack', 'full-stack'].includes(course.slug)
+  )
+
   return (
     <main className="min-h-screen bg-white text-zinc-950">
       <Navbar />
@@ -79,14 +83,16 @@ export default function ITServicesPage() {
                   className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
                 >
                   <div className="relative h-52 overflow-hidden">
-                    <img
+                    <Image
                       src={course.image}
                       alt={`${course.title} course`}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
                     <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
-                      3-6 Months
+                      {course.duration}
                     </span>
                   </div>
 
@@ -110,7 +116,7 @@ export default function ITServicesPage() {
                     <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
                       <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
                         <Clock className="h-3.5 w-3.5 text-blue-600" />
-                        3-6 Months
+                        {course.duration}
                       </span>
                       <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
                         <Layers3 className="h-3.5 w-3.5 text-blue-600" />
@@ -133,14 +139,16 @@ export default function ITServicesPage() {
                   className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
                 >
                   <div className="relative h-52 overflow-hidden">
-                    <img
+                    <Image
                       src={course.image}
                       alt={`${course.title} course`}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
                     <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
-                      8-10 Months
+                      {course.duration}
                     </span>
                   </div>
 
@@ -164,7 +172,7 @@ export default function ITServicesPage() {
                     <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
                       <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
                         <Clock className="h-3.5 w-3.5 text-blue-600" />
-                        8-10 Months
+                        {course.duration}
                       </span>
                       <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
                         <Layers3 className="h-3.5 w-3.5 text-blue-600" />

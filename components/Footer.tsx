@@ -5,9 +5,10 @@ const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/courses', label: 'Courses' },
-  { href: '/#internship', label: 'Internship' },
+  { href: '/internship', label: 'Internship' },
   { href: '/it-services', label: 'IT Services' },
   { href: '/events', label: 'Events' },
+  { href: '/blogs', label: 'Blogs' },
   { href: '/contact', label: 'Contact' },
 ]
 

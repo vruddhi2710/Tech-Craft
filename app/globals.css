@@ -17,21 +17,8 @@ html {
 }
 
 .reviews-marquee {
-  animation: reviews-scroll 28s linear infinite;
-}
-
-.reviews-marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes reviews-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  animation: reviews-marquee 42s linear infinite;
+  will-change: transform;
 }
 
 @keyframes hero-title-in {
@@ -46,8 +33,21 @@ html {
   }
 }
 
+@keyframes reviews-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 0.75rem), 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-title,
+  .hero-title {
+    animation: none;
+  }
+
   .reviews-marquee {
     animation: none;
   }

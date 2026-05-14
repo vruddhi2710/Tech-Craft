@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import CourseOutline from '../../../components/CourseOutline'
-import { courses, getCourse, type Course } from '../../../data/courses'
+import type { Course } from '../../../data/courses'
+import { readAdminCourses } from '../../../lib/adminData'
 import { ArrowLeft, ArrowRight, Award, BriefcaseBusiness, CheckCircle2, Clock, Handshake, Layers3, ListChecks, Wrench } from 'lucide-react'
 
 type CoursePageProps = {
@@ -45,15 +47,12 @@ function getCourseOutline(course: Course) {
   }))
 }
 
-export function generateStaticParams() {
-  return courses.map((course) => ({
-    slug: course.slug,
-  }))
-}
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: CoursePageProps) {
   const { slug } = await params
-  const course = getCourse(slug)
+  const courses = await readAdminCourses()
+  const course = courses.find((item) => item.slug === slug)
 
   if (!course) {
     return {
@@ -79,7 +78,8 @@ export async function generateMetadata({ params }: CoursePageProps) {
 
 export default async function CoursePage({ params }: CoursePageProps) {
   const { slug } = await params
-  const course = getCourse(slug)
+  const courses = await readAdminCourses()
+  const course = courses.find((item) => item.slug === slug)
 
   if (!course) {
     redirect('/courses')
@@ -149,9 +149,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
               <div className="absolute -right-5 -top-5 h-24 w-24 rounded-xl bg-blue-600" />
               <div className="absolute -bottom-5 -left-5 h-28 w-28 rounded-xl bg-zinc-950" />
               <div className="relative overflow-hidden rounded-2xl border-8 border-white bg-white shadow-2xl shadow-zinc-300/70">
-              <img
+              <Image
                 src={course.image}
                 alt={`${course.title} course`}
+                width={900}
+                height={675}
+                priority
+                sizes="(min-width: 1024px) 48vw, 100vw"
                 className="aspect-[4/3] w-full object-cover"
               />
               </div>

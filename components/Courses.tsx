@@ -1,14 +1,15 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, Clock, Layers3 } from 'lucide-react'
 import { useState } from 'react'
-import { courses } from '../data/courses'
+import type { Course } from '../data/courses'
 
 const categoryFilters = {
-  'Popular Courses': ['reactjs', 'python', 'genai', 'web-design'],
+  'Popular Courses': ['reactjs', 'python', 'genai', 'mern-stack'],
   Coding: ['basic-coding', 'python', 'reactjs', 'nodejs'],
-  Frontend: ['reactjs', 'web-design', 'basic-coding'],
+  Frontend: ['reactjs', 'full-stack', 'mern-stack'],
   Backend: ['nodejs', 'python', 'sql'],
   'Full Stack': ['mern-stack', 'full-stack', 'reactjs', 'nodejs'],
   Database: ['sql', 'nodejs', 'mern-stack'],
@@ -19,7 +20,11 @@ type Category = keyof typeof categoryFilters
 
 const categories = Object.keys(categoryFilters) as Category[]
 
-export default function Courses() {
+type CoursesProps = {
+  courses: Course[]
+}
+
+export default function Courses({ courses }: CoursesProps) {
   const [activeCategory, setActiveCategory] = useState<Category>('Popular Courses')
   const visibleCourses = courses.filter((course) => categoryFilters[activeCategory].includes(course.slug))
 
@@ -67,13 +72,15 @@ export default function Courses() {
               href={`/courses/${course.slug}`}
               className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
             >
-              <div className="relative h-44 overflow-hidden">
-                <img
+              <div className="relative aspect-[1402/1122] overflow-hidden bg-[#eef5ff]">
+                <Image
                   src={course.image}
                   alt={`${course.title} course`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-950/55 to-transparent" />
                 <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
                   {course.duration}
                 </span>

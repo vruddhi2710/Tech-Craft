@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Award, BriefcaseBusiness, CheckCircle2, PlayCircle, Star, Users } from 'lucide-react'
 
 const stats = [
@@ -65,9 +66,13 @@ export default function Hero() {
         <div className="relative">
           <div className="absolute -right-6 -top-6 h-28 w-28 rounded-xl bg-blue-600" />
           <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-xl bg-zinc-950" />
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
             alt="Students learning technology together"
+            width={900}
+            height={675}
+            priority
+            sizes="(min-width: 1024px) 48vw, 100vw"
             className="relative aspect-[4/3] w-full rounded-2xl border-8 border-white object-cover shadow-2xl shadow-zinc-300/70"
           />
           <div className="absolute -bottom-7 left-4 right-4 grid grid-cols-3 gap-3 rounded-xl border border-zinc-200 bg-white p-4 text-center shadow-2xl shadow-zinc-300/70 sm:left-8 sm:right-8">

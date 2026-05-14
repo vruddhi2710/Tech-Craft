@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { access, appendFile, mkdir, readFile, writeFile } from 'fs/promises'
 import path from 'path'
-import { courses } from '../../../data/courses'
+import { readAdminCourses } from '../../../lib/adminData'
 import { sendInquiryEmail } from '../../../lib/mailer'
 import { appendInquiryToGoogleSheet } from '../../../lib/googleSheet'
 
@@ -122,6 +122,7 @@ export async function POST(request: Request) {
   const email = text(body.email)
   const phone = text(body.phone)
   const message = text(body.message)
+  const courses = await readAdminCourses()
   const selectedCourse = courses.find((item) => item.slug === course)
 
   if (!name || !address || !course || !email || !phone) {

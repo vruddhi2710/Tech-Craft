@@ -159,36 +159,44 @@ const sqlOutline = [
 
 const basicCodingOutline = [
   {
-    title: 'Introduction to JavaScript',
-    topics: ['JavaScript overview and applications', 'Development environment setup', 'Basic syntax and data types', 'Variables, constants, and data structures'],
+    title: 'Basic Concepts',
+    topics: ['Installation and setup', 'Building and compiling the first program', '#include statements', 'Displaying output and reading terminal input', 'Compiler errors and warnings'],
   },
   {
-    title: 'Control Flow',
-    topics: ['if, else if, and else statements', 'Switch statements', 'for, while, and do-while loops', 'break and continue statements'],
+    title: 'Variables, Data Types and Operators',
+    topics: ['Basic data types', 'Enums and char', 'Format specifiers', 'Cast operator', 'sizeof operator'],
+  },
+  {
+    title: 'Conditional Operators',
+    topics: ['if and else', 'else-if ladder', 'switch statements', 'Decision-making practice'],
   },
   {
     title: 'Loops',
-    topics: ['for loop', 'while loop', 'for-in and for-of loops', 'Loop-based problem solving'],
+    topics: ['for loop', 'while loop', 'do-while loop', 'break and continue', 'Pattern programs'],
+  },
+  {
+    title: 'Arrays',
+    topics: ['Creating and using arrays', 'Array initialization', 'Multidimensional arrays', 'Variable length arrays', 'Array iteration'],
   },
   {
     title: 'Functions',
-    topics: ['Defining and invoking functions', 'Function parameters and arguments', 'Returning values from functions', 'Arrow functions and anonymous expressions'],
+    topics: ['Function basics', 'Defining functions', 'Arguments and parameters', 'Returning data from functions', 'Local and global variables'],
   },
   {
-    title: 'Arrays and Strings',
-    topics: ['Introduction to arrays', 'push, pop, splice, slice, and other array methods', 'Iterating through arrays', 'Strings and string methods'],
+    title: 'Strings',
+    topics: ['String overview', 'Defining strings', 'Constant strings', 'Common string functions', 'Searching, tokenizing, analyzing, and converting strings'],
   },
   {
-    title: 'Objects',
-    topics: ['Introduction to objects', 'Object properties and methods', 'Object manipulation and iteration', 'JSON, object to JSON, and JSON to object conversion'],
+    title: 'Pointers',
+    topics: ['Defining pointers', 'Accessing pointers', 'Void pointers', 'Pointers and arrays', 'Pointers and strings'],
   },
   {
-    title: 'Scope and Closures',
-    topics: ['Global, function, and block scope', 'Lexical scoping', 'Closures with practical examples'],
+    title: 'Dynamic Memory Allocation',
+    topics: ['Pointer review', 'Dynamic memory overview', 'malloc', 'calloc', 'realloc'],
   },
   {
-    title: 'Error Handling',
-    topics: ['Error handling in JavaScript', 'try, catch, and finally statements', 'Throwing and catching errors'],
+    title: 'Structures',
+    topics: ['Creating and using structures', 'Structures and arrays', 'Structures and pointers', 'Structures and functions'],
   },
 ]
 
@@ -227,8 +235,66 @@ const pythonOutline = [
   },
 ]
 
+const genAiOutline = [
+  {
+    title: 'Python Basics',
+    topics: ['Variables and data types', 'Operators, input, and output', 'Conditional statements and loops', 'Lists, strings, tuples, dictionaries, and sets', 'Functions, lambda, filter, map, reduce, and list comprehensions'],
+  },
+  {
+    title: 'File Handling',
+    topics: ['Opening files', 'Read, write, and append operations', 'Working with .txt files', 'Using the with statement'],
+  },
+  {
+    title: 'OOP (Class Programming)',
+    topics: ['Classes and objects', 'Constructors', 'Encapsulation and abstraction', 'Inheritance', 'Polymorphism'],
+  },
+  {
+    title: 'AI Fundamentals',
+    topics: ['Large Language Models overview', 'How GPT works internally', 'Tokenization and embeddings', 'Attention mechanisms', 'Transformer architecture'],
+  },
+  {
+    title: 'Prompt Engineering',
+    topics: ['Zero-shot prompting', 'One-shot and few-shot prompting', 'Chain-of-thought and persona-based prompting', 'Structured outputs with Pydantic'],
+  },
+  {
+    title: 'Running and Using LLMs',
+    topics: ['OpenAI and Gemini APIs with Python', 'Local models with Ollama and Docker', 'Hugging Face models', 'Instruct-tuned models'],
+  },
+  {
+    title: 'Create Your First AI Agent',
+    topics: ['Build an AI agent from scratch', 'CLI-based coding agents', 'Agent workflow planning', 'Claude-based coding agent practice'],
+  },
+]
+
 const mernOutline = [
-  ...reactOutline.slice(0, 11),
+  {
+    title: 'Basics of Frontend Technology',
+    topics: ['HTML tags and page structure', 'CSS basics', 'Bootstrap', 'JavaScript concepts'],
+  },
+  {
+    title: 'Introduction to React JS',
+    topics: ['ReactJS advantages', 'Virtual DOM', 'Development environment setup', 'Creating basic React components'],
+  },
+  {
+    title: 'JSX and Components',
+    topics: ['JSX syntax and benefits', 'Functional and class components', 'Component lifecycle methods', 'Props and state'],
+  },
+  {
+    title: 'React Routing',
+    topics: ['React Router basics', 'Routes and navigation', 'Dynamic routes and URL navigation', 'Nested routes and route guarding'],
+  },
+  {
+    title: 'React Hooks',
+    topics: ['Hook benefits', 'useState, useEffect, and useContext', 'Custom hooks', 'Migrating class components to functional components'],
+  },
+  {
+    title: 'State Management with Redux',
+    topics: ['Need for state management', 'Redux core principles', 'Redux setup in React', 'Actions and reducers'],
+  },
+  {
+    title: 'Advanced React Topics',
+    topics: ['Forms and validation', 'Client-server communication with REST APIs', 'Redux Thunk or Redux Saga', 'Performance optimization'],
+  },
   ...nodeOutline.slice(0, 7),
   {
     title: 'MongoDB Basics',
@@ -256,32 +322,32 @@ const mernOutline = [
   },
   {
     title: 'Project',
-    topics: ['Build APIs in Node JS', 'Build frontend in React JS', 'Connect MongoDB database', 'Complete MERN stack integration'],
+    topics: ['Build APIs in Node JS', 'Build frontend in React JS', 'Implement MongoDB operations', 'Complete CRUD and stack integration'],
   },
 ]
 
 const fullStackOutline = [
   ...reactOutline.slice(0, 11),
-  ...nodeOutline.slice(0, 7),
+  ...pythonOutline.slice(0, 7),
   {
-    title: 'SQL Setup',
-    topics: ['SQL introduction', 'Installation', 'Database setup'],
+    title: 'Full Stack Integration',
+    topics: ['Connecting React with Python APIs', 'Request and response handling', 'Form submission workflows', 'Error and loading states'],
   },
   {
-    title: 'DDL',
-    topics: ['Create, drop, alter, truncate, and rename operations', 'Creating tables', 'Normalization basics'],
+    title: 'MongoDB / SQL Data Layer',
+    topics: ['Database selection for project needs', 'MongoDB collections and SQL tables', 'CRUD operations', 'Queries, joins, and aggregation practice'],
   },
   {
-    title: 'DML',
-    topics: ['Select, insert, update, and delete operations', 'WHERE clause queries', 'Distinct, limit, top, and, or, not, order by, in, and between', 'LIKE, wildcards, aliases, and SQL joins'],
+    title: 'Authentication and Validation',
+    topics: ['Login and protected workflows', 'API validation with Pydantic', 'Frontend form validation', 'Secure data handling basics'],
   },
   {
-    title: 'Views',
-    topics: ['Creating views', 'Altering and calling views', 'Deleting views'],
+    title: 'Testing and Deployment',
+    topics: ['API testing with Postman', 'Project testing and bug fixing', 'Deployment preparation', 'Portfolio presentation'],
   },
   {
-    title: 'Usage with Node JS',
-    topics: ['Database connection', 'Querying from Node JS', 'Building a basic CRUD application'],
+    title: 'Capstone Project',
+    topics: ['Build a complete React and Python application', 'Use MongoDB or SQL database integration', 'Implement end-to-end CRUD workflows', 'Final project review and presentation'],
   },
 ]
 
@@ -291,9 +357,9 @@ export const courses: Course[] = [
     title: 'ReactJS',
     desc: 'Frontend Development with live projects',
     tagline: 'Build fast, modern interfaces with components, hooks, routing, and real production patterns.',
-    duration: '8 weeks',
+    duration: '3 to 6 months',
     level: 'Beginner to Intermediate',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c',
+    image: '/images/reactjs.png',
     highlights: [
       'Learn React fundamentals through hands-on UI builds',
       'Create responsive pages with reusable components',
@@ -313,9 +379,9 @@ export const courses: Course[] = [
     title: 'Python',
     desc: 'Automation + AI + backend development',
     tagline: 'Use Python to automate tasks, work with data, build APIs, and create practical AI workflows.',
-    duration: '10 weeks',
+    duration: '3 to 6 months',
     level: 'Beginner Friendly',
-    image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935',
+    image: '/images/python.png',
     highlights: [
       'Start from Python basics and move into real automation',
       'Build backend APIs and connect them to simple interfaces',
@@ -335,9 +401,9 @@ export const courses: Course[] = [
     title: 'GenAI',
     desc: 'AI tools, prompt engineering & APIs',
     tagline: 'Learn how modern AI tools work and build useful AI features with prompts, workflows, and APIs.',
-    duration: '6 weeks',
+    duration: '3 to 6 months',
     level: 'Beginner to Intermediate',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995',
+    image: '/images/genai.png',
     highlights: [
       'Understand prompt structure, model behavior, and AI workflows',
       'Create assistants, content tools, and automation flows',
@@ -345,41 +411,21 @@ export const courses: Course[] = [
     ],
     tools: ['ChatGPT', 'OpenAI APIs', 'Prompt Engineering', 'Automation Tools', 'No-code AI'],
     modules: [
-      'Prompting fundamentals and structured outputs',
-      'AI tools for research, content, coding, and productivity',
-      'Building AI apps with APIs and safe evaluation habits',
+      'Python basics, file handling, and OOP refresh',
+      'AI fundamentals, LLM internals, and prompt engineering',
+      'OpenAI, Gemini, Ollama, Hugging Face, and first AI agent',
     ],
+    outline: genAiOutline,
     projects: ['Prompt toolkit', 'AI content workflow', 'Custom AI app prototype'],
-  },
-  {
-    slug: 'web-design',
-    title: 'Web Development',
-    desc: 'Frontend websites with HTML, CSS, JavaScript & UI basics',
-    tagline: 'Build clean, modern websites with strong layouts, responsive styling, and user-friendly flows.',
-    duration: '6 weeks',
-    level: 'Beginner Friendly',
-    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e',
-    highlights: [
-      'Learn HTML, CSS, JavaScript, layout, spacing, and UI patterns',
-      'Build responsive website pages from polished designs',
-      'Create portfolio-ready web projects with clean structure',
-    ],
-    tools: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Responsive Design'],
-    modules: [
-      'Web basics, visual hierarchy, and layout systems',
-      'HTML, CSS, responsive styling, and interactive JavaScript',
-      'Figma to website workflow, deployment, and portfolio polish',
-    ],
-    projects: ['Responsive landing page', 'Business website', 'Portfolio case study'],
   },
   {
     slug: 'sql',
     title: 'SQL',
     desc: 'Database queries, joins, reports & data basics',
     tagline: 'Learn how to store, query, filter, join, and analyze data using practical database examples.',
-    duration: '4 weeks',
+    duration: '3 to 6 months',
     level: 'Beginner Friendly',
-    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d',
+    image: '/images/sql.png',
     highlights: [
       'Write clean SQL queries for real database tasks',
       'Understand tables, relationships, joins, and constraints',
@@ -399,9 +445,9 @@ export const courses: Course[] = [
     title: 'NodeJs',
     desc: 'Backend APIs with JavaScript, Express & databases',
     tagline: 'Build backend services, REST APIs, authentication flows, and database-connected applications.',
-    duration: '8 weeks',
+    duration: '3 to 6 months',
     level: 'Intermediate',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31',
+    image: '/images/nodejs.png',
     highlights: [
       'Use JavaScript on the server with NodeJs and Express',
       'Create REST APIs with routing, validation, and middleware',
@@ -418,34 +464,34 @@ export const courses: Course[] = [
   },
   {
     slug: 'basic-coding',
-    title: 'Basic Coding',
-    desc: 'Programming fundamentals for complete beginners',
-    tagline: 'Start coding from scratch with logic building, problem solving, and beginner-friendly projects.',
-    duration: '6 weeks',
+    title: 'Basic Coding (C/C++)',
+    desc: 'C/C++ programming fundamentals for complete beginners',
+    tagline: 'Start coding from scratch with C/C++ syntax, logic building, arrays, functions, pointers, memory, and structures.',
+    duration: '3 to 6 months',
     level: 'Beginner Friendly',
-    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4',
+    image: '/images/basicCoding.png',
     highlights: [
       'Understand variables, conditions, loops, functions, and arrays',
-      'Build confidence with simple coding exercises and mini projects',
-      'Learn how to think through problems step by step',
+      'Build confidence with C/C++ problem solving and pattern practice',
+      'Learn pointers, dynamic memory allocation, strings, and structures',
     ],
-    tools: ['JavaScript', 'Python Basics', 'VS Code', 'Logic Building', 'GitHub'],
+    tools: ['C', 'C++', 'VS Code', 'Compiler Setup', 'Logic Building'],
     modules: [
-      'Computer basics, code editors, variables, and data types',
-      'Conditions, loops, functions, arrays, and debugging',
-      'Problem solving practice and small project building',
+      'Setup, variables, data types, operators, and conditions',
+      'Loops, arrays, functions, strings, and problem solving',
+      'Pointers, dynamic memory allocation, and structures',
     ],
     outline: basicCodingOutline,
-    projects: ['Calculator app', 'Quiz program', 'Student marks analyzer'],
+    projects: ['Pattern programs', 'Calculator program', 'Student records with structures'],
   },
   {
     slug: 'mern-stack',
     title: 'MERN Stack',
     desc: 'MongoDB, Express, React & NodeJs full project training',
     tagline: 'Build complete web applications with React frontend, NodeJs backend, APIs, and MongoDB.',
-    duration: '12 weeks',
+    duration: '8 to 10 months',
     level: 'Intermediate',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+    image: '/images/mernstack.png',
     highlights: [
       'Create full stack apps with MongoDB, Express, React, and NodeJs',
       'Build reusable frontend components and backend API endpoints',
@@ -463,20 +509,20 @@ export const courses: Course[] = [
   {
     slug: 'full-stack',
     title: 'Full Stack',
-    desc: 'Frontend, backend, databases & deployment',
-    tagline: 'Learn the complete web development workflow from user interface to backend logic and hosting.',
-    duration: '14 weeks',
+    desc: 'React, Python, MongoDB/SQL & deployment',
+    tagline: 'Learn the complete web development workflow with React frontends, Python APIs, database design, and deployment.',
+    duration: '8 to 10 months',
     level: 'Beginner to Intermediate',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
+    image: '/images/pythonfullstack.png',
     highlights: [
       'Build responsive frontends and scalable backend APIs',
       'Work with databases, authentication, and complete app flows',
       'Deploy full stack projects with portfolio-ready presentation',
     ],
-    tools: ['HTML', 'CSS', 'JavaScript', 'React', 'NodeJs', 'Databases'],
+    tools: ['React', 'Python', 'FastAPI', 'Flask', 'MongoDB', 'SQL'],
     modules: [
       'Frontend foundations, React components, routing, and UI states',
-      'Backend APIs, database design, authentication, and validation',
+      'Python backend APIs, database design, authentication, and validation',
       'Full app integration, deployment, testing basics, and portfolio preparation',
     ],
     outline: fullStackOutline,

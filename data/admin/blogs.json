@@ -1,0 +1,65 @@
+[
+  {
+    "id": "why-python-is-still-the-best-first-language-2026-05-14",
+    "title": "Why Python Is Still the Best First Language for Career-Focused Students",
+    "description": "Python gives beginners a clean path into coding, automation, backend APIs, data work, and AI projects without overwhelming syntax.",
+    "content": "Python remains one of the strongest starting points for students because it removes unnecessary friction. The language reads close to English, so beginners can focus on logic, problem solving, and building confidence instead of fighting syntax from day one.\n\nFor career-focused learners, Python is also practical beyond basics. The same foundation can lead into automation scripts, data analysis with Pandas, backend development with Flask or FastAPI, and AI workflows using modern APIs. This makes Python useful for students who are still exploring their direction.\n\nA good Python learning plan should start with variables, conditions, loops, functions, lists, dictionaries, and file handling. After that, students should build small projects such as a marks analyzer, file organizer, quiz app, or simple API. Projects help convert theory into usable skill.\n\nThe biggest mistake beginners make is only watching tutorials. Python becomes powerful when students write code daily, debug errors, and explain what each line does. Even 45 minutes of focused practice every day can create visible progress within a few weeks.\n\nAt Tech-Craft, Python is taught as a career bridge: first coding confidence, then practical development, then project readiness. That is why it fits students who want a clean start and a flexible future in technology.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-14",
+    "image": "/images/python.png"
+  },
+  {
+    "id": "reactjs-skills-that-make-your-portfolio-stand-out-2026-05-15",
+    "title": "ReactJS Skills That Make Your Portfolio Stand Out",
+    "description": "A strong React portfolio should show components, hooks, routing, API handling, forms, state, responsive design, and clean project structure.",
+    "content": "ReactJS is popular because it teaches students how modern user interfaces are built: reusable components, predictable state, and fast interaction. But learning React is not only about knowing hooks. Employers and clients want to see whether you can build complete, polished screens that solve real problems.\n\nA standout React portfolio should include projects with routing, forms, validation, API calls, loading states, empty states, and responsive layouts. These details show that you understand how real users interact with an application, not just how to display data on a page.\n\nStudents should practice component thinking early. Break a page into navbar, cards, forms, filters, lists, and detail views. Then learn how props, state, useEffect, and custom hooks help those parts work together. This makes your code easier to maintain and easier to explain in interviews.\n\nOne good portfolio project is a course dashboard. It can include a course list, category filters, inquiry form, admin-style cards, and API-powered content. Another useful project is a job tracker or student management app. These projects feel real and give you interview talking points.\n\nReact becomes career-ready when design, logic, and data flow come together. Focus on building fewer projects with better quality rather than many unfinished demos.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-15",
+    "image": "/images/reactjs.png"
+  },
+  {
+    "id": "how-generative-ai-changes-student-projects-2026-05-16",
+    "title": "How Generative AI Changes Student Projects",
+    "description": "Generative AI helps students build smarter projects with assistants, content tools, research helpers, automation workflows, and structured outputs.",
+    "content": "Generative AI is changing what student projects can do. Earlier, most beginner projects stored data and displayed it. Now, students can add intelligent features such as chat assistants, summarizers, content generators, resume reviewers, and study planners.\n\nThe important skill is not only prompting. Students should understand how prompts, model behavior, structured outputs, API calls, and evaluation work together. A good AI feature needs clear instructions, useful context, safe output handling, and testing with different user inputs.\n\nPython is a strong companion for GenAI because it makes API integration simple. Students can build scripts that call AI models, process responses, validate data with Pydantic, and connect the result to a web app or backend API. This turns AI from a tool you use into a feature you can build.\n\nA practical first AI project could be a course guidance assistant. It asks the user about their background, interests, and available time, then recommends a learning path. Another project could be a document summarizer or interview question generator.\n\nThe best GenAI projects solve a focused problem. Do not add AI just because it is trending. Add it where it saves time, improves decision-making, or creates a better learning experience.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-16",
+    "image": "/images/genai.png"
+  },
+  {
+    "id": "nodejs-backend-skills-every-web-developer-needs-2026-05-17",
+    "title": "NodeJS Backend Skills Every Web Developer Needs",
+    "description": "NodeJS becomes job-ready when students understand Express routes, middleware, REST APIs, validation, authentication, databases, and Postman testing.",
+    "content": "NodeJS allows JavaScript developers to build server-side applications, APIs, and backend services. For students who already know JavaScript or React, NodeJS is a natural next step because it completes the full web development picture.\n\nThe foundation starts with modules, npm, asynchronous programming, callbacks, promises, and async/await. Once these concepts are clear, students can move into ExpressJS and learn routing, middleware, request handling, controllers, and error responses.\n\nA career-ready backend project should include REST API endpoints, validation, database operations, authentication, and clean folder structure. Postman testing is also important because it helps students understand how frontend and backend communicate before connecting a user interface.\n\nStudents should avoid writing all backend logic in one file. Even small projects should separate routes, controllers, services, and database models. This habit makes projects easier to scale and easier to discuss during interviews.\n\nGood NodeJS practice projects include a task manager API, course inquiry backend, authentication system, event registration API, or student records app. The goal is to prove that you can handle real data and real application flows.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-17",
+    "image": "/images/nodejs.png"
+  },
+  {
+    "id": "sql-basics-that-help-in-every-tech-career-2026-05-18",
+    "title": "SQL Basics That Help in Every Tech Career",
+    "description": "SQL is useful for developers, analysts, testers, backend engineers, and full stack students because almost every application depends on data.",
+    "content": "SQL is one of the most practical skills a student can learn because data exists in almost every technology role. Whether you want to become a backend developer, data analyst, tester, or full stack developer, you will eventually need to understand tables, relationships, and queries.\n\nStart with the basics: databases, tables, columns, data types, primary keys, foreign keys, and constraints. Then practice SELECT queries with WHERE, ORDER BY, LIMIT, AND, OR, IN, BETWEEN, and LIKE. These are the commands students use again and again in real projects.\n\nAfter the basics, joins become the most important topic. INNER JOIN, LEFT JOIN, RIGHT JOIN, grouping, aggregate functions, and subqueries help you answer real business questions from multiple tables. This is where SQL starts to feel powerful.\n\nA good SQL project can be simple but realistic. Build a student database, course inquiry system, sales report, library management database, or attendance tracker. Add queries for reports, filters, and summaries.\n\nSQL improves your thinking because it teaches structure. You learn how information should be stored, connected, protected, and retrieved. That mindset helps across backend APIs, dashboards, admin panels, and analytics work.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-18",
+    "image": "/images/sql.png"
+  },
+  {
+    "id": "mern-stack-roadmap-from-basics-to-capstone-2026-05-19",
+    "title": "MERN Stack Roadmap: From Basics to Capstone",
+    "description": "A MERN roadmap should move from frontend foundations to React, NodeJS, Express, MongoDB, authentication, deployment, and one complete project.",
+    "content": "MERN Stack is a strong path for students who want to become full stack JavaScript developers. It combines MongoDB, ExpressJS, ReactJS, and NodeJS, giving students everything needed to build complete web applications.\n\nThe roadmap should begin with HTML, CSS, JavaScript, and ES6 concepts. Without JavaScript confidence, React and NodeJS become harder than they need to be. After that, students can learn React components, hooks, routing, forms, and state management.\n\nThe backend stage should cover NodeJS, ExpressJS, REST APIs, middleware, validation, authentication, and Postman testing. Then MongoDB brings the database layer with collections, documents, CRUD operations, aggregation, indexes, and Mongoose models.\n\nThe final step is integration. Connect the React frontend to backend APIs, store records in MongoDB, handle errors, add loading states, and deploy the project. This is where students understand how the full stack works together.\n\nA strong MERN capstone could be a job portal, course inquiry dashboard, student management system, event registration app, or e-commerce module. The project should include real CRUD workflows and clean code organization.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-19",
+    "image": "/images/mernstack.png"
+  },
+  {
+    "id": "how-to-prepare-for-a-tech-internship-2026-05-20",
+    "title": "How to Prepare for a Tech Internship",
+    "description": "Internship readiness comes from fundamentals, project practice, GitHub habits, communication, debugging, and a clear explanation of your work.",
+    "content": "A tech internship is not only about knowing a programming language. It is about showing that you can learn, build, communicate, and improve your work with guidance. Students who prepare this way get much more value from their internship period.\n\nStart by strengthening fundamentals. Know variables, conditions, loops, functions, arrays, objects, APIs, and basic database concepts according to your chosen track. Then build two or three small projects before applying. Projects give you confidence and help mentors understand your level.\n\nGitHub is also important. Learn how to create repositories, write clear commit messages, and maintain a simple README. A clean GitHub profile shows consistency and helps you present your work professionally.\n\nDuring internship work, focus on asking better questions. Instead of saying something does not work, explain what you tried, what error you received, and what output you expected. This habit makes you easier to mentor and prepares you for real team environments.\n\nBefore the internship ends, polish one project enough to show in interviews. Add screenshots, explain the features, list the technologies, and prepare a short explanation of your role. A focused internship project can become the strongest part of your beginner portfolio.",
+    "author": "Tech-Craft Team",
+    "publishDate": "2026-05-20",
+    "image": "/images/pythonfullstack.png"
+  }
+]

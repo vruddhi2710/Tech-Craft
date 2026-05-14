@@ -1,7 +1,8 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { courses } from '../../data/courses'
+import { readAdminCourses } from '../../lib/adminData'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -18,7 +19,11 @@ export const metadata = {
     'Explore all Tech-Craft courses including ReactJS, Python, SQL, NodeJs, MERN Stack, Full Stack, GenAI, and basic coding.',
 }
 
-export default function CoursesPage() {
+export const dynamic = 'force-dynamic'
+
+export default async function CoursesPage() {
+  const courses = await readAdminCourses()
+
   return (
     <main className="min-h-screen bg-white text-zinc-950">
       <Navbar />
@@ -94,125 +99,11 @@ export default function CoursesPage() {
                   className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
                 >
                   <div className="relative h-52 overflow-hidden">
-                    <img
+                    <Image
                       src={course.image}
                       alt={`${course.title} course`}
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
-                    <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
-                      3-6 Months
-                    </span>
-                    <span className="absolute bottom-4 left-4 rounded-md bg-blue-600 px-3 py-1 text-xs font-black text-white">
-                      {course.level}
-                    </span>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="text-2xl font-black text-zinc-950">
-                          {course.title}
-                        </h3>
-                        <p className="mt-2 font-bold text-blue-600">{course.desc}</p>
-                      </div>
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 transition group-hover:rotate-6 group-hover:bg-blue-600 group-hover:text-white">
-                        <ArrowUpRight className="h-5 w-5" />
-                      </span>
-                    </div>
-
-                    <p className="mt-4 min-h-20 leading-7 text-zinc-600">
-                      {course.tagline}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
-                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
-                        <Clock className="h-3.5 w-3.5 text-blue-600" />
-                        3-6 Months
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
-                        <Layers3 className="h-3.5 w-3.5 text-blue-600" />
-                        {course.modules.length} modules
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-16">
-            <h3 className="mb-8 text-2xl font-black text-zinc-950">8 to 10 Months Programs</h3>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {courses.filter(course =>
-                ['mern-stack', 'full-stack'].includes(course.slug)
-              ).map((course) => (
-                <Link
-                  key={course.slug}
-                  href={`/courses/${course.slug}`}
-                  className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
-                >
-                  <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={course.image}
-                      alt={`${course.title} course`}
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
-                    <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
-                      8-10 Months
-                    </span>
-                    <span className="absolute bottom-4 left-4 rounded-md bg-blue-600 px-3 py-1 text-xs font-black text-white">
-                      {course.level}
-                    </span>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="text-2xl font-black text-zinc-950">
-                          {course.title}
-                        </h3>
-                        <p className="mt-2 font-bold text-blue-600">{course.desc}</p>
-                      </div>
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 transition group-hover:rotate-6 group-hover:bg-blue-600 group-hover:text-white">
-                        <ArrowUpRight className="h-5 w-5" />
-                      </span>
-                    </div>
-
-                    <p className="mt-4 min-h-20 leading-7 text-zinc-600">
-                      {course.tagline}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
-                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
-                        <Clock className="h-3.5 w-3.5 text-blue-600" />
-                        8-10 Months
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
-                        <Layers3 className="h-3.5 w-3.5 text-blue-600" />
-                        {course.modules.length} modules
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-16">
-            <h3 className="mb-8 text-2xl font-black text-zinc-950">All Available Courses</h3>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {courses.map((course) => (
-                <Link
-                  key={course.slug}
-                  href={`/courses/${course.slug}`}
-                  className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
-                >
-                  <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={course.image}
-                      alt={`${course.title} course`}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
@@ -240,6 +131,132 @@ export default function CoursesPage() {
                     <p className="mt-4 min-h-20 leading-7 text-zinc-600">
                       {course.tagline}
                     </p>
+
+                    <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
+                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
+                        <Clock className="h-3.5 w-3.5 text-blue-600" />
+                        {course.duration}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
+                        <Layers3 className="h-3.5 w-3.5 text-blue-600" />
+                        {course.modules.length} modules
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-16">
+            <h3 className="mb-8 text-2xl font-black text-zinc-950">8 to 10 Months Programs</h3>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {courses.filter(course =>
+                ['mern-stack', 'full-stack'].includes(course.slug)
+              ).map((course) => (
+                <Link
+                  key={course.slug}
+                  href={`/courses/${course.slug}`}
+                  className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={course.image}
+                      alt={`${course.title} course`}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
+                    <span className="absolute left-4 top-4 rounded-md bg-white px-3 py-1 text-xs font-black text-blue-600">
+                      {course.duration}
+                    </span>
+                    <span className="absolute bottom-4 left-4 rounded-md bg-blue-600 px-3 py-1 text-xs font-black text-white">
+                      {course.level}
+                    </span>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-2xl font-black text-zinc-950">
+                          {course.title}
+                        </h3>
+                        <p className="mt-2 font-bold text-blue-600">{course.desc}</p>
+                      </div>
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 transition group-hover:rotate-6 group-hover:bg-blue-600 group-hover:text-white">
+                        <ArrowUpRight className="h-5 w-5" />
+                      </span>
+                    </div>
+
+                    <p className="mt-4 min-h-20 leading-7 text-zinc-600">
+                      {course.tagline}
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
+                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
+                        <Clock className="h-3.5 w-3.5 text-blue-600" />
+                        {course.duration}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">
+                        <Layers3 className="h-3.5 w-3.5 text-blue-600" />
+                        {course.modules.length} modules
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-16">
+            <h3 className="mb-8 text-2xl font-black text-zinc-950">All Available Courses</h3>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {courses.map((course) => (
+                <Link
+                  key={course.slug}
+                  href={`/courses/${course.slug}`}
+                  className="group overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl shadow-zinc-200/70 transition duration-300 hover:-translate-y-2 hover:border-blue-200"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={course.image}
+                      alt={`${course.title} course`}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/10 to-transparent" />
+                    <span className="absolute bottom-4 left-4 rounded-md bg-blue-600 px-3 py-1 text-xs font-black text-white">
+                      {course.level}
+                    </span>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-2xl font-black text-zinc-950">
+                          {course.title}
+                        </h3>
+                        <p className="mt-2 font-bold text-blue-600">{course.desc}</p>
+                      </div>
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 transition group-hover:rotate-6 group-hover:bg-blue-600 group-hover:text-white">
+                        <ArrowUpRight className="h-5 w-5" />
+                      </span>
+                    </div>
+
+                    <p className="mt-4 min-h-20 leading-7 text-zinc-600">
+                      {course.tagline}
+                    </p>
+
+                    <ul className="mt-5 grid gap-2 text-sm font-bold text-zinc-600">
+                      {course.modules.slice(0, 2).map((module) => (
+                        <li key={module} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                          {module}
+                        </li>
+                      ))}
+                    </ul>
 
                     <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
                       <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 px-3 py-1.5">

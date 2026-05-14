@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "front-end-development-with-ai",
+    "title": "Front end Development With AI",
+    "course": "React Js",
+    "date": "2026-05-23",
+    "time": "10 to 1",
+    "venue": "Tech-Craft",
+    "mode": "Offline",
+    "seats": "20-25",
+    "description": "learn how to build frontend with AI",
+    "highlights": [
+      "Build with AI"
+    ],
+    "image": "/images/reactjs.png"
+  }
+]

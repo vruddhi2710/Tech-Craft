@@ -27,7 +27,10 @@ export default function LocationSection() {
             </div>
             <div className="rounded-xl border border-white/10 bg-white/10 p-5">
               <Phone className="mb-3 h-6 w-6 text-blue-300" />
-              Course inquiry available
+              <p>Course inquiry available</p>
+              <a href="tel:+918849870596" className="mt-2 inline-block text-base text-white transition hover:text-blue-200">
+                +91 88498 70596
+              </a>
             </div>
           </div>
 
