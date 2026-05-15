@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { getPublishedBlogs, readAdminBlogs, readAdminCourses } from '../lib/adminData'
+import { siteUrl } from './seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'
   const now = new Date()
   const [courses, blogs] = await Promise.all([
     readAdminCourses(),
@@ -22,6 +22,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/about`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/it-services`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
     },
     {
       url: `${siteUrl}/events`,
@@ -46,6 +58,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/contact`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/feedback`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
     },
     ...courses.map((course) => ({
       url: `${siteUrl}/courses/${course.slug}`,

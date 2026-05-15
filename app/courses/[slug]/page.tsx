@@ -6,6 +6,7 @@ import Footer from '../../../components/Footer'
 import CourseOutline from '../../../components/CourseOutline'
 import type { Course } from '../../../data/courses'
 import { readAdminCourses } from '../../../lib/adminData'
+import { createSeoMetadata } from '../../seo'
 import { ArrowLeft, ArrowRight, Award, BriefcaseBusiness, CheckCircle2, Clock, Handshake, Layers3, ListChecks, Wrench } from 'lucide-react'
 
 type CoursePageProps = {
@@ -56,24 +57,29 @@ export async function generateMetadata({ params }: CoursePageProps) {
 
   if (!course) {
     return {
-      title: 'Course Not Found',
+      title: 'Course Not Found | Tech-Craft',
+      robots: {
+        index: false,
+        follow: false,
+      },
     }
   }
 
-  return {
-    title: `${course.title} Course`,
-    description: course.desc,
-    openGraph: {
-      title: `${course.title} Course`,
-      description: course.desc,
-      images: [
-        {
-          url: course.image,
-          alt: `${course.title} course`,
-        },
-      ],
-    },
-  }
+  return createSeoMetadata({
+    title: `${course.title} Course in Ahmedabad | Tech-Craft`,
+    description: `${course.desc} Learn ${course.title} with practical training, projects, certification, placement support and career guidance at Tech-Craft Ahmedabad.`,
+    path: `/courses/${course.slug}`,
+    image: course.image,
+    keywords: [
+      `${course.title} course`,
+      `${course.title} training`,
+      `${course.title} Ahmedabad`,
+      'Full Stack Development Course',
+      'Placement Support',
+      'Placement Assistance',
+      'Internship with Live Project',
+    ],
+  })
 }
 
 export default async function CoursePage({ params }: CoursePageProps) {

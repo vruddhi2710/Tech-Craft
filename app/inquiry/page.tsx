@@ -3,6 +3,7 @@ import Footer from '../../components/Footer'
 import InquiryForm from '../../components/InquiryForm'
 import { readAdminCourses } from '../../lib/adminData'
 import { CheckCircle2, Clock, GraduationCap, Phone } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
 type InquiryPageProps = {
   searchParams: Promise<{
@@ -10,10 +11,19 @@ type InquiryPageProps = {
   }>
 }
 
-export const metadata = {
-  title: 'Course Inquiry',
-  description: 'Submit a course inquiry for Tech-Craft.',
-}
+export const metadata = createSeoMetadata({
+  title: 'Course Inquiry for IT Training Ahmedabad',
+  description:
+    'Submit a course inquiry for ReactJS, NodeJS, Python Full Stack, MERN Stack, AI/ML, GenAI, SQL, web development training and internships.',
+  path: '/inquiry',
+  keywords: [
+    'course inquiry Ahmedabad',
+    'IT training admission',
+    'Full Stack Development Course',
+    'Placement Assistance',
+    'Internship with Live Project',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 

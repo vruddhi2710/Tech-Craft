@@ -1,0 +1,71 @@
+
+> tech-craft@1.0.0 dev
+> next dev -p 3001
+
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.29.25:3001
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+ ○ Compiling /about ...
+ ✓ Compiled /about in 1552ms (682 modules)
+ HEAD /about 200 in 2341ms
+ GET /about 200 in 182ms
+ GET /about 200 in 206ms
+ GET /about 200 in 546ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 781ms (691 modules)
+ GET /favicon.ico 200 in 1083ms
+ ✓ Compiled in 2.5s (697 modules)
+ GET /about 200 in 891ms
+ GET /about 200 in 625ms
+ GET /about 200 in 214ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 823ms (688 modules)
+ GET /about 404 in 1062ms
+ ✓ Compiled in 491ms (702 modules)
+ GET /about 200 in 433ms
+ ✓ Compiled in 1706ms (697 modules)
+ ✓ Compiled in 1505ms (697 modules)
+ GET /about 200 in 506ms
+ GET /about 200 in 748ms
+ ○ Compiling /it-services ...
+ ✓ Compiled /it-services in 3.2s (750 modules)
+ GET /internship 200 in 3912ms
+ GET /courses 200 in 3927ms
+ GET /events 200 in 3920ms
+ GET /it-services 200 in 3929ms
+ GET / 200 in 3946ms
+ ○ Compiling /inquiry ...
+ ✓ Compiled /inquiry in 2.2s (765 modules)
+ GET /contact 200 in 2629ms
+ GET /inquiry 200 in 2631ms
+ GET /blogs 200 in 2641ms
+ ✓ Compiled in 6.6s (710 modules)
+ ✓ Compiled in 4s (711 modules)
+ ✓ Compiled in 1424ms (711 modules)
+ ✓ Compiled in 1640ms (711 modules)
+ ✓ Compiled in 1392ms (285 modules)
+ ✓ Compiled in 1383ms (712 modules)
+ ✓ Compiled in 337ms (285 modules)
+ ✓ Compiled in 333ms (285 modules)
+ ✓ Compiled in 282ms (285 modules)
+ ✓ Compiled in 553ms (285 modules)
+ ✓ Compiled in 928ms (712 modules)
+ ✓ Compiled in 392ms (285 modules)
+ ✓ Compiled in 344ms (285 modules)
+ ✓ Compiled in 382ms (285 modules)
+ ✓ Compiled in 609ms (285 modules)
+ ✓ Compiled in 650ms (285 modules)
+ ✓ Compiled in 264ms (285 modules)
+ ✓ Compiled in 389ms (285 modules)
+ ✓ Compiled in 332ms (285 modules)
+ ✓ Compiled in 318ms (285 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 803ms (466 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1340ms (1084 modules)
+ GET / 500 in 6867ms
+ HEAD / 200 in 1091ms

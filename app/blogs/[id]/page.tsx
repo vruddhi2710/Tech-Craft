@@ -5,6 +5,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { getBlogById, readAdminBlogs } from '../../../lib/adminData'
 import { ArrowLeft, CalendarDays, UserCircle } from 'lucide-react'
+import { createSeoMetadata } from '../../seo'
 
 type BlogPageProps = {
   params: Promise<{
@@ -20,19 +21,29 @@ export async function generateMetadata({ params }: BlogPageProps) {
 
   if (!blog) {
     return {
-      title: 'Blog Not Found',
+      title: 'Blog Not Found | Tech-Craft',
+      robots: {
+        index: false,
+        follow: false,
+      },
     }
   }
 
-  return {
-    title: blog.title,
+  return createSeoMetadata({
+    title: `${blog.title} | Tech-Craft Blog`,
     description: blog.description,
-    openGraph: {
-      title: blog.title,
-      description: blog.description,
-      images: blog.image ? [{ url: blog.image, alt: blog.title }] : [],
-    },
-  }
+    path: `/blogs/${blog.id}`,
+    image: blog.image || undefined,
+    keywords: [
+      'coding in Ahmedabad',
+      'IT training blog',
+      'AI learning',
+      'ReactJS',
+      'Python',
+      'MERN Stack',
+      'internship guidance',
+    ],
+  })
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {

@@ -4,11 +4,22 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { ArrowRight, ArrowUpRight, Clock, Layers3 } from 'lucide-react'
 import { readAdminCourses } from '../../lib/adminData'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'IT Services | Tech-Craft',
-  description: 'Explore Tech-Craft IT Services including training programs in Python, React, Node.js, Generative AI, SQL, MERN Stack, and Full Stack Development.',
-}
+export const metadata = createSeoMetadata({
+  title: 'IT Training Services in Ahmedabad | Tech-Craft',
+  description:
+    'Explore IT training services in Ahmedabad for Python, ReactJS, NodeJS, Generative AI, SQL, MERN Stack, full stack development and internships.',
+  path: '/it-services',
+  keywords: [
+    'IT Training Institute',
+    'IT training Ahmedabad',
+    'Full Stack Development Course',
+    'MERN Stack Training',
+    'Python Full Stack',
+    'Generative AI training',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 

@@ -4,11 +4,22 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { readAdminEvents } from '../../lib/adminData'
 import { ArrowRight, CalendarDays, Clock, GraduationCap, MapPin, Ticket, Users } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'Events',
-  description: 'Upcoming Tech-Craft course events, workshops, demo classes, and career sessions.',
-}
+export const metadata = createSeoMetadata({
+  title: 'IT Training Events and Workshops | Tech-Craft',
+  description:
+    'Join Tech-Craft events, demo classes and workshops in Ahmedabad for coding, ReactJS, Python, MERN Stack, AI/ML, GenAI, SQL and career guidance.',
+  path: '/events',
+  keywords: [
+    'IT training events',
+    'coding workshop Ahmedabad',
+    'AI workshop Ahmedabad',
+    'GenAI workshop',
+    'career guidance',
+    'demo class Ahmedabad',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 

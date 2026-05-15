@@ -2,11 +2,21 @@ import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { ArrowRight, Clock, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'Contact',
-  description: 'Contact Tech-Craft for course counseling, workshops, and internship inquiries.',
-}
+export const metadata = createSeoMetadata({
+  title: 'Contact Tech-Craft for IT Training Ahmedabad',
+  description:
+    'Contact Tech-Craft for IT training, placement support, course counseling, internships, ReactJS, Python, MERN Stack, AI/ML, GenAI and SQL guidance.',
+  path: '/contact',
+  keywords: [
+    'course counseling Ahmedabad',
+    'IT training inquiry',
+    'placement support',
+    'internship inquiry',
+    'coding classes Ahmedabad',
+  ],
+})
 
 export default function ContactPage() {
   return (

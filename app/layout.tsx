@@ -2,34 +2,46 @@ import './globals.css'
 import type { Metadata } from 'next'
 import FreeConsultationWidget from '../components/FreeConsultationWidget'
 import TechCraftAssistant from '../components/TechCraftAssistant'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'
+import {
+  defaultSeoImage,
+  homeSeoDescription,
+  homeSeoTitle,
+  seoKeywords,
+  siteName,
+  siteUrl,
+} from './seo'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: siteName,
   title: {
-    default: 'Tech-Craft | Learn AI, ReactJS, Python & Web Development',
+    default: homeSeoTitle,
     template: '%s | Tech-Craft',
   },
-  description: 'Learn AI, ReactJS, Python & Future Skills with ISO-certified certification, training support, and placement support.',
-  keywords: [
-    'Tech-Craft',
-    'AI course',
-    'ReactJS course',
-    'Python course',
-    'Web Development course',
-    'GenAI workshop',
-    'tech internship',
-    'ISO certified certification',
-    'placement support',
-    'training support',
-  ],
+  description: homeSeoDescription,
+  keywords: seoKeywords,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Tech-Craft',
-    description: 'Learn AI, ReactJS, Python & Future Skills with real projects, ISO-certified certification, and placement support.',
-    url: siteUrl,
-    siteName: 'Tech-Craft',
+    title: homeSeoTitle,
+    description: homeSeoDescription,
+    url: '/',
+    siteName,
+    images: [
+      {
+        url: defaultSeoImage,
+        alt: 'Tech-Craft technical training and internship institute in Ahmedabad',
+      },
+    ],
+    locale: 'en_IN',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: homeSeoTitle,
+    description: homeSeoDescription,
+    images: [defaultSeoImage],
   },
   robots: {
     index: true,

@@ -4,11 +4,22 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { getPublishedBlogs, readAdminBlogs } from '../../lib/adminData'
 import { ArrowRight, CalendarDays, FileText } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'Blogs | Tech-Craft',
-  description: 'Daily Tech-Craft blogs on coding, AI, internships, project building, and career guidance.',
-}
+export const metadata = createSeoMetadata({
+  title: 'Coding, AI and Internship Blogs | Tech-Craft',
+  description:
+    'Read Tech-Craft blogs on coding in Ahmedabad, ReactJS, NodeJS, Python, MERN Stack, AI/ML, GenAI, SQL, web development and internship guidance.',
+  path: '/blogs',
+  keywords: [
+    'coding blogs Ahmedabad',
+    'AI learning blogs',
+    'MERN Stack blogs',
+    'Python Full Stack blogs',
+    'internship guidance',
+    'web development blogs',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 

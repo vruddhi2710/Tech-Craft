@@ -2,11 +2,21 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import FeedbackForm from '../../components/FeedbackForm'
 import { MessageSquareHeart, Sparkles, ThumbsUp } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'Feedback',
-  description: 'Share your feedback with Tech-Craft.',
-}
+export const metadata = createSeoMetadata({
+  title: 'Student Feedback for Tech-Craft Training',
+  description:
+    'Share feedback about Tech-Craft IT training, technical courses, internships, placement support, ReactJS, Python, MERN Stack, AI/ML and GenAI learning.',
+  path: '/feedback',
+  keywords: [
+    'Tech-Craft feedback',
+    'student feedback',
+    'training feedback',
+    'placement support feedback',
+    'IT training reviews',
+  ],
+})
 
 export default function FeedbackPage() {
   return (

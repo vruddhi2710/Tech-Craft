@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { readAdminCourses } from '../../lib/adminData'
+import { createSeoMetadata } from '../seo'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -13,11 +14,21 @@ import {
   Layers3,
 } from 'lucide-react'
 
-export const metadata = {
-  title: 'Courses | Tech-Craft',
+export const metadata = createSeoMetadata({
+  title: 'Courses for ReactJS, Python, MERN Stack | Tech-Craft',
   description:
-    'Explore all Tech-Craft courses including ReactJS, Python, SQL, NodeJs, MERN Stack, Full Stack, GenAI, and basic coding.',
-}
+    'Explore ReactJS, NodeJS, Python Full Stack, MERN Stack, AI/ML, GenAI, SQL and web development courses with placement support in Ahmedabad.',
+  path: '/courses',
+  keywords: [
+    'ReactJS course',
+    'NodeJS course',
+    'Python Full Stack course',
+    'MERN Stack course',
+    'AI Course in Ahmedabad',
+    'SQL course',
+    'Web Development course',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 

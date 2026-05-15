@@ -6,7 +6,6 @@ import {
   ArrowRight,
   Bot,
   GraduationCap,
-  MessageCircle,
   Send,
   Sparkles,
   X,
@@ -442,10 +441,11 @@ export default function TechCraftAssistant() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-5 z-[58] flex h-14 w-14 items-center justify-center rounded-full bg-[#071a3d] text-white shadow-2xl shadow-blue-950/30 transition hover:-translate-y-0.5 hover:bg-blue-700 lg:bottom-6 lg:right-6"
+        className="group fixed bottom-24 right-5 z-[58] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-sky-500 to-cyan-500 text-white shadow-2xl shadow-blue-600/30 transition hover:-translate-y-0.5 hover:from-blue-700 hover:via-sky-600 hover:to-cyan-600 lg:bottom-6 lg:right-6"
         aria-label="Open Tech-Craft assistant"
       >
-        <MessageCircle className="h-6 w-6" />
+        <Bot className="h-6 w-6 transition group-hover:scale-105" />
+        <Sparkles className="absolute right-3 top-3 h-3 w-3 text-blue-100" />
       </button>
     </>
   )

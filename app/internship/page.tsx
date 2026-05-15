@@ -4,12 +4,22 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { readAdminCourses } from '../../lib/adminData'
 import { ArrowRight, Award, BriefcaseBusiness, CalendarDays } from 'lucide-react'
+import { createSeoMetadata } from '../seo'
 
-export const metadata = {
-  title: 'Internship | Tech-Craft',
+export const metadata = createSeoMetadata({
+  title: 'Internship with Live Project in Ahmedabad | Tech-Craft',
   description:
-    'Explore Tech-Craft internships from 15 days to 3 months with certificate support across practical technology tracks.',
-}
+    'Join Tech-Craft internships with live project experience in Ahmedabad across Python, ReactJS, MERN Stack, AI, GenAI, SQL and web development.',
+  path: '/internship',
+  keywords: [
+    'Internship in Ahmedabad',
+    'Internship with Live Project',
+    'Python internship',
+    'ReactJS internship',
+    'MERN Stack internship',
+    'Web Development internship',
+  ],
+})
 
 export const dynamic = 'force-dynamic'
 
