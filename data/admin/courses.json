@@ -155,26 +155,23 @@
   {
     "slug": "python",
     "title": "Python",
-    "desc": "Automation + AI + backend development",
+    "desc": "Backend development",
     "tagline": "Use Python to automate tasks, work with data, build APIs, and create practical AI workflows.",
     "duration": "3 to 6 months",
     "level": "Beginner Friendly",
     "image": "/images/python.png",
     "highlights": [
-      "Start from Python basics and move into real automation",
-      "Build backend APIs and connect them to simple interfaces",
-      "Use Python libraries for files, data, and AI-powered tasks"
+      "Start from Python basics and Build backend APIs and connect them to simple interfaces",
+      "Use Python libraries for files, data"
     ],
     "tools": [
       "Python",
-      "Flask",
       "FastAPI",
-      "Pandas",
-      "OpenAI APIs"
+      "Pandas"
     ],
     "modules": [
       "Python syntax, functions, loops, and data structures",
-      "Files, automation scripts, packages, and virtual environments",
+      "Files, packages, and virtual environments",
       "APIs, data workflows, and AI integrations"
     ],
     "outline": [
@@ -182,9 +179,20 @@
         "title": "Python Fundamentals",
         "topics": [
           "Python setup and real-world applications",
-          "Syntax, variables, data types, and operators",
+          "Syntax",
+          "variables",
+          "data types",
+          "and operators",
           "Input and output operations",
-          "Conditionals, loops, control statements, functions, lambda, map, filter, reduce, and list comprehensions"
+          "Conditionals",
+          "loops",
+          "control statements",
+          "functions",
+          "lambda",
+          "map",
+          "filter",
+          "reduce",
+          "and list comprehensions"
         ]
       },
       {
@@ -207,19 +215,30 @@
       {
         "title": "Libraries (NumPy and Pandas)",
         "topics": [
-          "NumPy arrays, indexing, and operations",
+          "NumPy arrays",
+          "indexing",
+          "and operations",
           "Pandas Series and DataFrames",
           "Data cleaning and preprocessing",
-          "Filtering, grouping, aggregation, and basic visualization"
+          "Filtering",
+          "grouping",
+          "aggregation",
+          "and basic visualization"
         ]
       },
       {
-        "title": "API Development (FastAPI / Flask)",
+        "title": "API Development (FastAPI)",
         "topics": [
           "API fundamentals and REST concepts",
-          "GET, POST, PUT, and DELETE methods",
+          "GET",
+          "POST",
+          "PUT",
+          "and DELETE methods",
           "Routing and request/response handling",
-          "Swagger, Postman, middleware, and validation"
+          "Swagger",
+          "Postman",
+          "middleware",
+          "and validation"
         ]
       },
       {
@@ -228,7 +247,10 @@
           "Data validation fundamentals",
           "BaseModel and field types",
           "Built-in types and collections",
-          "Nested models, serialization, deserialization, and API usage"
+          "Nested models",
+          "serialization",
+          "deserialization",
+          "and API usage"
         ]
       },
       {
@@ -236,7 +258,9 @@
         "topics": [
           "SQL and NoSQL basics",
           "CRUD operations",
-          "Queries, joins, and aggregation",
+          "Queries",
+          "joins",
+          "and aggregation",
           "Connecting Python APIs with databases"
         ]
       },

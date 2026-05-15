@@ -29,7 +29,7 @@ export async function getGoogleReviews(): Promise<DisplayReview[]> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY
   const placeId = process.env.GOOGLE_PLACE_ID
 
-  if (!apiKey || !placeId) {
+  if (!apiKey || !placeId || apiKey.toLowerCase().startsWith('your_')) {
     return []
   }
 

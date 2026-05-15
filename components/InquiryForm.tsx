@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useMemo, useState } from 'react'
+import { FormEvent, useEffect, useMemo, useState } from 'react'
 import type { Course } from '../data/courses'
 
 type InquiryFormProps = {
@@ -46,6 +46,15 @@ export default function InquiryForm({ courses, defaultCourse }: InquiryFormProps
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [statusMessage, setStatusMessage] = useState('')
+
+  useEffect(() => {
+    if (!selectedCourse) return
+
+    setForm((current) => ({
+      ...current,
+      course: selectedCourse,
+    }))
+  }, [selectedCourse])
 
   function updateField(field: keyof FormState, value: string) {
     setForm((current) => ({

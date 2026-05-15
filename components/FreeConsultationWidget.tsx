@@ -56,7 +56,7 @@ export default function FreeConsultationWidget() {
     }
   }, [courses.length, isOpen])
 
-  if (pathname.startsWith('/admin')) {
+  if (pathname?.startsWith('/admin')) {
     return null
   }
 

@@ -22,7 +22,10 @@ export default function Navbar() {
   const pathname = usePathname()
 
   const isActiveLink = (link: (typeof navLinks)[number]) => {
-    return pathname === link.pathname
+    if (!pathname) return false
+    if (link.pathname === '/') return pathname === '/'
+
+    return pathname === link.pathname || pathname.startsWith(`${link.pathname}/`)
   }
 
   return (

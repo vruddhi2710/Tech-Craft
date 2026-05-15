@@ -19,6 +19,10 @@ type MailResult = {
 const smtpHost = 'smtp.gmail.com'
 const smtpPort = 465
 
+function isPlaceholder(value: string) {
+  return value.toLowerCase().startsWith('your_')
+}
+
 function encodeBase64(value: string) {
   return Buffer.from(value, 'utf8').toString('base64')
 }
@@ -102,10 +106,10 @@ export async function sendInquiryEmail(inquiry: InquiryEmail): Promise<MailResul
   const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '')
   const recipient = 'techcraft1999@gmail.com'
 
-  if (!user || !password) {
+  if (!user || !password || isPlaceholder(password)) {
     return {
       sent: false,
-      reason: 'GMAIL_USER and GMAIL_APP_PASSWORD are required to send email.',
+      reason: 'GMAIL_USER and a valid GMAIL_APP_PASSWORD are required to send email.',
     }
   }
 
@@ -115,7 +119,7 @@ export async function sendInquiryEmail(inquiry: InquiryEmail): Promise<MailResul
     servername: smtpHost,
   })
   socket.on('error', () => {})
-  socket.setTimeout(15000, () => {
+  socket.setTimeout(8000, () => {
     socket.destroy(new Error('SMTP connection timed out.'))
   })
 

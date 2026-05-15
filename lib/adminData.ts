@@ -17,10 +17,24 @@ export type AdminEvent = EventItem & {
   image: string
 }
 
+export type AdminInquiry = {
+  id: string
+  submittedAt: string
+  name: string
+  address: string
+  course: string
+  courseTitle: string
+  email: string
+  phone: string
+  message: string
+  notifyEmail: string
+}
+
 const dataDirectory = path.join(process.cwd(), 'data', 'admin')
 const coursesPath = path.join(dataDirectory, 'courses.json')
 const blogsPath = path.join(dataDirectory, 'blogs.json')
 const eventsPath = path.join(dataDirectory, 'events.json')
+const inquiriesPath = path.join(dataDirectory, 'inquiries.json')
 
 async function ensureDirectory() {
   await mkdir(dataDirectory, { recursive: true })
@@ -95,6 +109,15 @@ export async function readAdminEvents() {
 
 export async function writeAdminEvents(events: AdminEvent[]) {
   await writeJson(eventsPath, events)
+}
+
+export async function readAdminInquiries() {
+  return readJson<AdminInquiry[]>(inquiriesPath, [])
+}
+
+export async function appendAdminInquiry(inquiry: AdminInquiry) {
+  const inquiries = await readAdminInquiries()
+  await writeJson(inquiriesPath, [inquiry, ...inquiries])
 }
 
 export function slugify(value: string) {

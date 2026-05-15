@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import FreeConsultationWidget from '../components/FreeConsultationWidget'
+import TechCraftAssistant from '../components/TechCraftAssistant'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'
 
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <TechCraftAssistant />
         <FreeConsultationWidget />
       </body>
     </html>

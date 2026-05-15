@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { readAdminCourses } from '../../../lib/adminData'
+import { appendAdminInquiry, readAdminCourses, type AdminInquiry } from '../../../lib/adminData'
 import { sendInquiryEmail } from '../../../lib/mailer'
 import { appendInquiryToGoogleSheet } from '../../../lib/googleSheet'
 
@@ -12,19 +12,6 @@ type InquiryRequest = {
   email?: unknown
   phone?: unknown
   message?: unknown
-}
-
-type InquiryRecord = {
-  id: string
-  submittedAt: string
-  name: string
-  address: string
-  course: string
-  courseTitle: string
-  email: string
-  phone: string
-  message: string
-  notifyEmail: string
 }
 
 const notifyEmail = 'techcraft1999@gmail.com'
@@ -67,7 +54,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
   }
 
-  const inquiry: InquiryRecord = {
+  const inquiry: AdminInquiry = {
     id: crypto.randomUUID(),
     submittedAt: new Date().toISOString(),
     name,
@@ -80,15 +67,29 @@ export async function POST(request: Request) {
     notifyEmail,
   }
 
-  const emailStatus = await sendInquiryEmail(inquiry)
-  const sheetStatus = await appendInquiryToGoogleSheet(inquiry)
+  let storageStatus: { saved: boolean; reason?: string } = { saved: true }
 
-  if (!emailStatus.sent && !sheetStatus.appended) {
+  try {
+    await appendAdminInquiry(inquiry)
+  } catch (error) {
+    storageStatus = {
+      saved: false,
+      reason: error instanceof Error ? error.message : 'Inquiry could not be saved locally.',
+    }
+  }
+
+  const [emailStatus, sheetStatus] = await Promise.all([
+    sendInquiryEmail(inquiry),
+    appendInquiryToGoogleSheet(inquiry),
+  ])
+
+  if (!storageStatus.saved && !emailStatus.sent && !sheetStatus.appended) {
     return NextResponse.json(
       {
         error: 'Inquiry could not be submitted right now. Please call or email Tech-Craft directly.',
         email: emailStatus,
         sheet: sheetStatus,
+        storage: storageStatus,
       },
       { status: 500 },
     )
@@ -99,5 +100,6 @@ export async function POST(request: Request) {
     inquiry,
     email: emailStatus,
     sheet: sheetStatus,
+    storage: storageStatus,
   })
 }

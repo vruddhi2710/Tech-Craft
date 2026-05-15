@@ -20,7 +20,7 @@ export async function appendInquiryToGoogleSheet(inquiry: InquirySheetRow): Prom
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL
   const secret = process.env.GOOGLE_SHEET_WEBHOOK_SECRET
 
-  if (!webhookUrl) {
+  if (!webhookUrl || webhookUrl.toLowerCase().startsWith('your_')) {
     return {
       appended: false,
       reason: 'GOOGLE_SHEET_WEBHOOK_URL is not configured.',
@@ -33,6 +33,7 @@ export async function appendInquiryToGoogleSheet(inquiry: InquirySheetRow): Prom
       headers: {
         'Content-Type': 'application/json',
       },
+      signal: AbortSignal.timeout(8000),
       body: JSON.stringify({
         secret,
         inquiry,
