@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
 
 export const siteName = 'Tech-Craft'
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001').replace(/\/$/, '')
+const rawSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://www.tech-craft.org'
+
+export const siteUrl = rawSiteUrl.startsWith('http')
+  ? rawSiteUrl.replace(/\/$/, '')
+  : `https://${rawSiteUrl.replace(/\/$/, '')}`
 export const defaultSeoImage = '/techcraft-logo.jpeg'
 
 export const homeSeoTitle = 'Best IT Training Institute in Ahmedabad | Tech-Craft'
