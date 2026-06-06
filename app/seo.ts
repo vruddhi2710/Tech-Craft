@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const siteName = 'Tech-Craft'
 const rawSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  'https://www.tech-craft.org'
+  'https://tech-craft.org'
 
 export const siteUrl = rawSiteUrl.startsWith('http')
   ? rawSiteUrl.replace(/\/$/, '')
