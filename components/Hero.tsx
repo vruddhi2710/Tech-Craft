@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Award, BriefcaseBusiness, CheckCircle2, PlayCircle, Star, Users } from 'lucide-react'
+import mainPageImage from '../images/mainPage.jpeg'
 
 const stats = [
   { value: 'ISO', label: 'Certified Training', icon: Award },
@@ -67,7 +68,7 @@ export default function Hero() {
           <div className="absolute -right-6 -top-6 h-28 w-28 rounded-xl bg-blue-500" />
           <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-xl bg-white/10" />
           <Image
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            src={mainPageImage}
             alt="Students learning technology together"
             width={900}
             height={675}
