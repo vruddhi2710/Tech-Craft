@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/', label: 'Home', pathname: '/' },
   { href: '/about', label: 'About Us', pathname: '/about' },
   { href: '/courses', label: 'Courses', pathname: '/courses' },
+  { href: '/gift-a-course', label: 'Gift a Course', pathname: '/gift-a-course' },
   { href: '/internship', label: 'Internship', pathname: '/internship' },
   { href: '/it-services', label: 'IT Services', pathname: '/it-services' },
   { href: '/events', label: 'Events', pathname: '/events' },
@@ -57,7 +58,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden items-center text-sm font-bold text-zinc-700 lg:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center text-[13px] font-bold text-zinc-700 xl:flex">
           {navLinks.map((link) => {
             const isActive = isActiveLink(link)
 
@@ -66,13 +67,13 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={`group relative px-4 py-2 transition duration-200 hover:text-blue-600 ${
+                className={`group relative whitespace-nowrap px-2 py-2 transition duration-200 hover:text-blue-600 ${
                   isActive ? 'text-blue-600' : ''
                 }`}
               >
                 <span>{link.label}</span>
                 <span
-                  className={`absolute inset-x-4 -bottom-1 h-0.5 origin-left bg-blue-600 transition duration-200 ${
+                  className={`absolute inset-x-2 -bottom-1 h-0.5 origin-left bg-blue-600 transition duration-200 ${
                     isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
@@ -84,7 +85,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/inquiry"
-            className="group hidden items-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 text-sm font-black text-white shadow-lg shadow-blue-600/25 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700 sm:flex"
+            className="group hidden shrink-0 items-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-blue-600/25 transition duration-200 hover:-translate-y-0.5 hover:bg-blue-700 xl:flex"
           >
             Enroll Now
             <ArrowRight className="h-4 w-4 transition duration-200 group-hover:translate-x-0.5" />
@@ -96,7 +97,7 @@ export default function Navbar() {
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((open) => !open)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-zinc-950 transition hover:bg-zinc-100 lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-zinc-950 transition hover:bg-zinc-100 xl:hidden"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -105,7 +106,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`max-h-[calc(100vh-68px)] overflow-y-auto border-t border-zinc-200 bg-white px-4 py-4 shadow-xl shadow-zinc-200/70 transition lg:hidden sm:px-6 ${isOpen ? 'block' : 'hidden'
+        className={`max-h-[calc(100vh-68px)] overflow-y-auto border-t border-zinc-200 bg-white px-4 py-4 shadow-xl shadow-zinc-200/70 transition xl:hidden sm:px-6 ${isOpen ? 'block' : 'hidden'
           }`}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-2">

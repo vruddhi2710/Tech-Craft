@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import FreeConsultationWidget from '../components/FreeConsultationWidget'
 import TechCraftAssistant from '../components/TechCraftAssistant'
 import {
@@ -75,9 +76,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {children}
-        <TechCraftAssistant />
-        <FreeConsultationWidget />
+        <AppRouterCacheProvider>
+          {children}
+          <TechCraftAssistant />
+          <FreeConsultationWidget />
+        </AppRouterCacheProvider>
       </body>
     </html>
   )

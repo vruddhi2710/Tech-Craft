@@ -204,6 +204,8 @@ export default function AdminPanel() {
   const [eventModal, setEventModal] = useState<EventForm | null>(null)
   const [previewBlog, setPreviewBlog] = useState<AdminBlog | null>(null)
   const [weeklyBlogs, setWeeklyBlogs] = useState<BlogForm[]>([])
+  const [imageFiles, setImageFiles] = useState<Record<string, File | undefined>>({})
+  const [imagePreviews, setImagePreviews] = useState<Record<string, string | undefined>>({})
 
   const isDark = theme === 'dark'
   const shellClass = isDark ? 'bg-zinc-950 text-white' : 'bg-[#f5f9ff] text-zinc-950'
@@ -304,11 +306,12 @@ export default function AdminPanel() {
     if (!courseModal) return
 
     await runAction(async () => {
+      const image = await uploadSelectedImage('course', courseModal.image)
       const method = courseModal.slug ? 'PUT' : 'POST'
       const response = await fetch('/api/admin/courses', {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(courseModal),
+        body: JSON.stringify({ ...courseModal, image }),
       })
       const data = await readJson<{ courses: Course[] }>(response)
       setCourses(data.courses)
@@ -331,11 +334,12 @@ export default function AdminPanel() {
     if (!blogModal) return
 
     await runAction(async () => {
+      const image = await uploadSelectedImage('blog', blogModal.image)
       const method = blogModal.id ? 'PUT' : 'POST'
       const response = await fetch('/api/admin/blogs', {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(blogModal),
+        body: JSON.stringify({ ...blogModal, image }),
       })
       const data = await readJson<{ blogs: AdminBlog[] }>(response)
       setBlogs(data.blogs)
@@ -345,10 +349,14 @@ export default function AdminPanel() {
 
   async function saveWeeklyBlogs() {
     await runAction(async () => {
+      const blogs = await Promise.all(weeklyBlogs.map(async (blog, index) => ({
+        ...blog,
+        image: await uploadSelectedImage(`weekly-${index}`, blog.image),
+      })))
       const response = await fetch('/api/admin/blogs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blogs: weeklyBlogs }),
+        body: JSON.stringify({ blogs }),
       })
       const data = await readJson<{ blogs: AdminBlog[] }>(response)
       setBlogs(data.blogs)
@@ -371,16 +379,41 @@ export default function AdminPanel() {
     if (!eventModal) return
 
     await runAction(async () => {
+      const image = await uploadSelectedImage('event', eventModal.image)
       const method = eventModal.slug ? 'PUT' : 'POST'
       const response = await fetch('/api/admin/events', {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(eventModal),
+        body: JSON.stringify({ ...eventModal, image }),
       })
       const data = await readJson<{ events: AdminEvent[] }>(response)
       setEvents(data.events)
       setEventModal(null)
     }, 'Event saved successfully.')
+  }
+
+  function selectImage(key: string, file?: File) {
+    setImageFiles((current) => ({ ...current, [key]: file }))
+    setImagePreviews((current) => {
+      if (current[key]?.startsWith('blob:')) URL.revokeObjectURL(current[key]!)
+      return { ...current, [key]: file ? URL.createObjectURL(file) : undefined }
+    })
+  }
+
+  async function uploadSelectedImage(key: string, currentImage: string) {
+    const file = imageFiles[key]
+    if (!file) return currentImage
+
+    const formData = new FormData()
+    formData.set('image', file)
+    const response = await fetch('/api/admin/upload', { method: 'POST', body: formData })
+    const data = await readJson<{ image: string }>(response)
+    setImageFiles((current) => ({ ...current, [key]: undefined }))
+    setImagePreviews((current) => {
+      if (current[key]?.startsWith('blob:')) URL.revokeObjectURL(current[key]!)
+      return { ...current, [key]: undefined }
+    })
+    return data.image
   }
 
   async function deleteEvent(slug: string) {
@@ -702,7 +735,7 @@ export default function AdminPanel() {
                   <input placeholder="Title" value={blog.title} onChange={(event) => updateWeeklyBlog(index, 'title', event.target.value)} className={`rounded-lg border px-3 py-2 outline-none ${inputClass}`} />
                   <input placeholder="Author" value={blog.author} onChange={(event) => updateWeeklyBlog(index, 'author', event.target.value)} className={`rounded-lg border px-3 py-2 outline-none ${inputClass}`} />
                   <input type="date" value={blog.publishDate} onChange={(event) => updateWeeklyBlog(index, 'publishDate', event.target.value)} className={`rounded-lg border px-3 py-2 outline-none ${inputClass}`} />
-                  <input placeholder="Image URL" value={blog.image} onChange={(event) => updateWeeklyBlog(index, 'image', event.target.value)} className={`rounded-lg border px-3 py-2 outline-none md:col-span-3 ${inputClass}`} />
+                  <ImageUpload label="Blog Image" value={imagePreviews[`weekly-${index}`] || blog.image} onChange={(file) => selectImage(`weekly-${index}`, file)} inputClass={inputClass} />
                   <textarea placeholder="Description" value={blog.description} onChange={(event) => updateWeeklyBlog(index, 'description', event.target.value)} className={`rounded-lg border px-3 py-2 outline-none md:col-span-3 ${inputClass}`} />
                   <textarea placeholder="Rich content" value={blog.content} onChange={(event) => updateWeeklyBlog(index, 'content', event.target.value)} className={`min-h-28 rounded-lg border px-3 py-2 outline-none md:col-span-3 ${inputClass}`} />
                 </div>
@@ -780,7 +813,7 @@ export default function AdminPanel() {
           <TextInput label="Course Name" value={courseModal.title} onChange={(value) => setCourseModal({ ...courseModal, title: value })} inputClass={inputClass} required />
           <TextInput label="Course Duration" value={courseModal.duration} onChange={(value) => setCourseModal({ ...courseModal, duration: value })} inputClass={inputClass} required />
           <TextInput label="Course Description" value={courseModal.desc} onChange={(value) => setCourseModal({ ...courseModal, desc: value })} inputClass={inputClass} required />
-          <TextInput label="Thumbnail/Image URL" value={courseModal.image} onChange={(value) => setCourseModal({ ...courseModal, image: value })} inputClass={inputClass} required />
+          <ImageUpload label="Course Image" value={imagePreviews.course || courseModal.image} onChange={(file) => selectImage('course', file)} inputClass={inputClass} required={!courseModal.image} />
           <TextInput label="Level" value={courseModal.level} onChange={(value) => setCourseModal({ ...courseModal, level: value })} inputClass={inputClass} />
           <TextInput label="Tagline" value={courseModal.tagline} onChange={(value) => setCourseModal({ ...courseModal, tagline: value })} inputClass={inputClass} />
           <TextArea label="Course Modules" value={courseModal.modules} onChange={(value) => setCourseModal({ ...courseModal, modules: value })} inputClass={inputClass} />
@@ -802,7 +835,7 @@ export default function AdminPanel() {
           <TextInput label="Blog Title" value={blogModal.title} onChange={(value) => setBlogModal({ ...blogModal, title: value })} inputClass={inputClass} required />
           <TextInput label="Author Name" value={blogModal.author} onChange={(value) => setBlogModal({ ...blogModal, author: value })} inputClass={inputClass} required />
           <TextInput label="Publish Date" type="date" value={blogModal.publishDate} onChange={(value) => setBlogModal({ ...blogModal, publishDate: value })} inputClass={inputClass} required />
-          <TextInput label="Blog Image" value={blogModal.image} onChange={(value) => setBlogModal({ ...blogModal, image: value })} inputClass={inputClass} />
+          <ImageUpload label="Blog Image" value={imagePreviews.blog || blogModal.image} onChange={(file) => selectImage('blog', file)} inputClass={inputClass} />
           <TextArea label="Blog Description" value={blogModal.description} onChange={(value) => setBlogModal({ ...blogModal, description: value })} inputClass={inputClass} />
           <TextArea label="Rich Blog Content" value={blogModal.content} onChange={(value) => setBlogModal({ ...blogModal, content: value })} inputClass={inputClass} placeholder="Write the full blog content here." />
           <ModalActions />
@@ -821,7 +854,7 @@ export default function AdminPanel() {
           <TextInput label="Event Time" value={eventModal.time} onChange={(value) => setEventModal({ ...eventModal, time: value })} inputClass={inputClass} required />
           <TextInput label="Event Location" value={eventModal.venue} onChange={(value) => setEventModal({ ...eventModal, venue: value })} inputClass={inputClass} required />
           <TextInput label="Course / Category" value={eventModal.course} onChange={(value) => setEventModal({ ...eventModal, course: value })} inputClass={inputClass} />
-          <TextInput label="Event Image" value={eventModal.image} onChange={(value) => setEventModal({ ...eventModal, image: value })} inputClass={inputClass} required />
+          <ImageUpload label="Event Image" value={imagePreviews.event || eventModal.image} onChange={(file) => selectImage('event', file)} inputClass={inputClass} required={!eventModal.image} />
           <label className="block">
             <span className="text-sm font-black">Mode</span>
             <select value={eventModal.mode} onChange={(event) => setEventModal({ ...eventModal, mode: event.target.value as AdminEvent['mode'] })} className={`mt-2 w-full rounded-lg border px-4 py-3 outline-none focus:ring-4 ${inputClass}`}>
@@ -972,6 +1005,16 @@ function TextInput({ label, value, onChange, inputClass, type = 'text', required
     <label className="block">
       <span className="text-sm font-black">{label}</span>
       <input required={required} type={type} value={value} onChange={(event) => onChange(event.target.value)} className={`mt-2 w-full rounded-lg border px-4 py-3 outline-none focus:ring-4 ${inputClass}`} />
+    </label>
+  )
+}
+
+function ImageUpload({ label, value, onChange, inputClass, required = false }: { label: string; value: string; onChange: (file?: File) => void; inputClass: string; required?: boolean }) {
+  return (
+    <label className="block md:col-span-2">
+      <span className="text-sm font-black">{label}</span>
+      <input type="file" accept="image/*" required={required} onChange={(event) => onChange(event.target.files?.[0])} className={`mt-2 w-full cursor-pointer rounded-lg border px-4 py-3 outline-none file:mr-4 file:rounded-md file:border-0 file:bg-blue-600 file:px-3 file:py-2 file:font-bold file:text-white focus:ring-4 ${inputClass}`} />
+      {value ? <img src={value} alt={`${label} preview`} className="mt-3 h-40 max-w-full rounded-lg object-cover" /> : null}
     </label>
   )
 }

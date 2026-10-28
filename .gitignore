@@ -2,3 +2,6 @@ node_modules
 dist
 build
 .next
+.next-dev
+.env.local
+.env.*.local
