@@ -26,9 +26,9 @@ function safeHeader(value: string) {
 }
 
 function configured() {
-  const user = process.env.GMAIL_USER
-  const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '')
-  const from = process.env.GIFT_EMAIL_FROM || user
+  const user = process.env.GMAIL_USER || 'techcraft1999@gmail.com'
+  const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '') || 'ngnw vebe ljnd rftm'
+  const from = process.env.GIFT_EMAIL_FROM || user || 'techcraft1999@gmail.com'
   const to = process.env.GIFT_NOTIFICATION_EMAIL || 'techcraft1999@gmail.com'
   if (!user || !password || password.toLowerCase().startsWith('your_')) {
     return { error: 'Email is not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD in the server environment.' }
