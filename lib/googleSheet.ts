@@ -17,8 +17,8 @@ type SheetResult = {
 }
 
 export async function appendInquiryToGoogleSheet(inquiry: InquirySheetRow): Promise<SheetResult> {
-  const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL
-  const secret = process.env.GOOGLE_SHEET_WEBHOOK_SECRET
+  const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbwkDyys60dsw2_hdYLZVSxffitDV9geiFo8affheXW7nWsPyEY1DFOpaoq9FUxAyyFT/exec'
+  const secret = process.env.GOOGLE_SHEET_WEBHOOK_SECRET || 'tech-craft-secret'
 
   if (!webhookUrl || webhookUrl.toLowerCase().startsWith('your_')) {
     return {

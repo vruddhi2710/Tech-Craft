@@ -102,8 +102,10 @@ async function sendCommand(socket: tls.TLSSocket, command: string, expectedCodes
 }
 
 export async function sendInquiryEmail(inquiry: InquiryEmail): Promise<MailResult> {
-  const user = process.env.GMAIL_USER
-  const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '')
+  const user = process.env.GMAIL_USER || 'techcraft1999@gmail.com'
+  // const user = 'techcraft1999@gmail.com'
+  // const password = 'ngnw vebe ljnd rftm'
+  const password = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '') || 'ngnw vebe ljnd rftm'
   const recipient = 'techcraft1999@gmail.com'
 
   if (!user || !password || isPlaceholder(password)) {
@@ -118,7 +120,7 @@ export async function sendInquiryEmail(inquiry: InquiryEmail): Promise<MailResul
     port: smtpPort,
     servername: smtpHost,
   })
-  socket.on('error', () => {})
+  socket.on('error', () => { })
   socket.setTimeout(8000, () => {
     socket.destroy(new Error('SMTP connection timed out.'))
   })
