@@ -24,6 +24,10 @@ type InquiryResponse = {
     sent: boolean
     reason?: string
   }
+  sheet?: {
+    appended: boolean
+    reason?: string
+  }
 }
 
 const emptyForm: FormState = {
@@ -80,7 +84,18 @@ export default function InquiryForm({ courses, defaultCourse }: InquiryFormProps
       const result = await response.json() as InquiryResponse
 
       if (!response.ok) {
-        throw new Error(result.error || 'Something went wrong. Please try again.')
+        const integrationErrors = [
+          result.sheet && !result.sheet.appended && result.sheet.reason
+            ? `Google Sheets: ${result.sheet.reason}`
+            : '',
+          result.email && !result.email.sent && result.email.reason
+            ? `Email: ${result.email.reason}`
+            : '',
+        ].filter(Boolean)
+
+        throw new Error(
+          [result.error || 'Something went wrong. Please try again.', ...integrationErrors].join(' '),
+        )
       }
 
       setStatus('success')

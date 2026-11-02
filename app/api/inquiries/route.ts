@@ -83,15 +83,20 @@ export async function POST(request: Request) {
     appendInquiryToGoogleSheet(inquiry),
   ])
 
-  if (!storageStatus.saved && !emailStatus.sent && !sheetStatus.appended) {
+  if (!emailStatus.sent || !sheetStatus.appended) {
+    const failedServices = [
+      !sheetStatus.appended ? 'Google Sheets' : '',
+      !emailStatus.sent ? 'email notification' : '',
+    ].filter(Boolean)
+
     return NextResponse.json(
       {
-        error: 'Inquiry could not be submitted right now. Please call or email Tech-Craft directly.',
+        error: `Your inquiry was received, but ${failedServices.join(' and ')} could not be completed. Please contact Tech-Craft directly to confirm your inquiry.`,
         email: emailStatus,
         sheet: sheetStatus,
         storage: storageStatus,
       },
-      { status: 500 },
+      { status: 502 },
     )
   }
 
